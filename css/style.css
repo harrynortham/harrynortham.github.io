@@ -91,7 +91,6 @@ figcaption {
 	.main-nav a {
 		font-size: .95em;
 		color: #ccc;
-		text-transform: uppercase;
 	}
 
 	.main-nav a:hover {
@@ -113,9 +112,13 @@ figcaption {
 
 .banner {
 	color: #fff;
-	background: #3acec2;
+  background:
+  linear-gradient(90deg,rgba(58, 206, 194), rgba(58, 206, 194, .7)),
+  #3acec2 url('https://picsum.photos/1000/400?image=1047') no-repeat center;
+background-size: cover;
 	padding: 3.2em 0;
 	margin-bottom: 60px;
+      text-shadow: 1px 1px 1px #222;
 }
 
 .col {
