@@ -113,7 +113,7 @@ figcaption {
 .banner {
 	color: #fff;
   background:
-  linear-gradient(90deg,rgba(58, 206, 194), rgba(58, 206, 194, .7)),
+  linear-gradient(90deg,rgba(58, 206, 194), rgba(58, 206, 194, .5)),
   #3acec2 url('https://picsum.photos/1000/400?image=1047') no-repeat center;
 background-size: cover;
 	padding: 3.2em 0;
@@ -137,6 +137,7 @@ background-size: cover;
 .logo {
 	width: 190px;
   border-radius: 50%;
+	border: 10px solid rgba(0,0,0,.2);
 }
 
 .headline {
@@ -150,12 +151,17 @@ background-size: cover;
 	right: -15px;
 }
 
+.image-border{
+	padding:10px;
+border: solid 1px #d9e4ea;
+}
 
 /* =================================
   Media Queries
 ==================================== */
 
 @media (min-width: 769px) {
+
 
   .wrap{
     min-height: calc(100vh - 89px); /*height of sticky footer*/
@@ -195,6 +201,12 @@ background-size: cover;
 
 	.tagline {
 		font-size: 1.4em;
+	}
+	.logo{
+		transition: transform .2s ease-in-out;
+	}
+	.logo:hover{
+		transform: scale(1.2);
 	}
 
 	/* ---- Float clearfix ---- */
