@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Harry Northam | Front End Development</title>
 	 <meta name="description" content="Check out my latest projects and what i'm currently working on. #html5 #css3 #js">
-	 <!--Google font, I like it-->
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<!--Reset browser default styles-->
 	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/style.css">
-  <!--Responsive image polyfill, for backward compatibility when using responsive images srcset-->
+	<link rel="stylesheet" href="css/base.css">
+
+	<!--Responsive image polyfill, for backward compatibility when using responsive images srcset-->
   <script src="js/picturefill.min.js" async></script>
 	<!--Include font awesome for some cool icons-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -27,73 +27,57 @@
 </head>
 <body>
 
-	<header class="main-header ">
-		<div class="container clearfix">
-			<h1 class="name"><a href="#">Harry Northam</a></h1>
-			<a href="javascript:void(0);" class="burger-icon" onclick="burgerNavigationToggle()">
-				<i class="fa fa-bars"></i>
-			</a>
-			<ul class="main-nav" id="myLinks">
-					<li><a href="#">Projects</a></li>
-					<li><a href="#">Code Snippets</a></li>
-				<li><a href="https://github.com/harrynortham" target="_blank">Github</a></li>
-			</ul>
-		</div>
+	<header class="main-header">
+		<h1 class="name"><a href="#">Harry Northam</a></h1>
+		<ul class="main-nav">
+			<li><a href="#">Projects</a></li>
+			<li><a href="#">Code Snippets</a></li>
+			<li><a href="#">Github</a></li>
+		</ul>
 	</header><!--/.main-header-->
 
-<div class="wrap">
-
 	<div class="banner">
-		<img class="logo" srcset="img/harry.png 1x, img/harry@2x.jpg 2x" src="img/harry.png" alt="Harry">
+				<img class="logo" srcset="img/harry.png 1x, img/harry@2x.jpg 2x" src="img/harry.png" alt="Harry">
 		<h1 class="headline">Front End Development</h1>
 		<span class="tagline">HTML, CSS, Javascript</span>
 	</div><!--/.banner-->
 
-	<div class="container clearfix">
+	<div class="row">
+		<div class="primary col">
+			<h2>Welcome!</h2>
+			<p>Everything in this city is worth waiting in line for. Cupcake ipsum dolor sit. Amet chocolate cake gummies jelly beans.</p>
+			<p><strong>Car: </strong>Pie apple pie pudding I love wafer toffee liquorice sesame snaps lemon drops. Lollipop gummi bears dessert muffin I love fruitcake toffee pie.</p>
+			<p><strong>Car: </strong>Jelly cotton candy bonbon jelly-o jelly-o I love. I love sugar plum chocolate cake pie I love pastry liquorice.</p>
+			<a class="button" href="#">Learn More</a>
+		</div><!--/.primary-->
 
 		<div class="secondary col">
-			<h2>Mobile First CSS</h2>
-			<p>Everything in this city is worth waiting in line for.</p>
-			<p>Cupcake ipsum dolor sit. Amet chocolate cake gummies jelly beans candy bonbon brownie candy. Gingerbread powder muffin. Icing cotton candy. Croissant icing pie ice cream brownie I love cheesecake cookie. Pastry chocolate pastry jelly croissant.</p>
-			<p>Cake sesame snaps sweet tart candy canes tiramisu I love oat cake chocolate bar. Jelly beans pastry brownie sugar plum pastry bear claw tiramisu tootsie roll. Tootsie roll wafer I love chocolate donuts.</p>
+			<h2>Great food</h2>
+			<p>Croissant macaroon pie brownie. Cookie marshmallow liquorice gingerbread caramels toffee I love chocolate.</p>
+			<p>Wafer lollipop dessert. Bonbon jelly beans pudding dessert sugar plum.</p>
+			<a class="button" href="#">Learn More</a>
 		</div><!--/.secondary-->
 
-		<div class="primary col">
-			<h2>Absolute Positioning</h2>
+		<div class="tertiary col">
+			<h2>How to get here</h2>
+			<p><strong>Plane: </strong>Tiramisu caramels gummies chupa chups lollipop muffin. Jujubes chocolate caramels cheesecake brownie lollipop drag&#233;e cheesecake.</p>
 
 			<!--featured image-->
-			<figure>
+		<!--	<figure>
 				<img class="icon-location" src="img/location.svg" alt="Location">
 				<img class="feat-img" src="img/treats.svg" alt="Drinks and eats">
 				<figcaption>
-					<h4>Featured Drinks &amp; Eats!</h4>
 					Croissant macaroon pie brownie cookie marshmallow liquorice gingerbread caramels toffee.
 				</figcaption>
-			</figure>
-
-			<p>Croissant macaroon pie brownie. Cookie marshmallow liquorice gingerbread caramels toffee I love chocolate. Wafer lollipop dessert. Bonbon jelly beans pudding dessert sugar plum. Marzipan toffee drag&#233;e chocolate bar candy toffee pudding I love. Gummi bears pie gingerbread lollipop.</p>
-		</div><!--/.primary-->
-
-		<div class="tertiary col">
-			<h2>Responsive</h2>
-			<p><strong>Plane: </strong>Tiramisu caramels gummies chupa chups lollipop muffin. Jujubes chocolate caramels cheesecake brownie lollipop drag&#233;e cheesecake.</p>
+			</figure> -->
 
 
-<h4>Responsive image using srcset</h4>
-<p>If device is 2x pixel density we will show a higher resolution image</p>
-<img class="image-border" srcset="img/people@1x.jpeg 1x, img/people@2x.jpeg 2x" src="img/people@1x.jpeg" alt="responsive image">
-<!--We can also do responsive images by image width
-<img srcset="img/banner-large.jpg 2048w, img/banner-medium.jpg 1400w, img/banner-small.jpg 800w"
-src="img/banner-medium.jpg" alt="responsive by width"/>
--->
+			<a class="button" href="#">Learn More</a>
 		</div><!--/.tertiary-->
-
-	</div><!--/.container-->
-
-</div><!--/. wrap-->
+	</div>
 
 	<footer class="main-footer">
-		<span>&copy;2019 Harry Northam. Keep it simple.</span>
+		<span>&copy;2019 Harry Northam. Made in Gibraltar.</span>
 	<div class="social-icons">
 		<a href="https://www.github.com/harrynortham"><i class="fab fa-github-square"></i></a>
 		<a href="https://www.twitter.com/harrynortham"><i class="fab fa-twitter-square"></i></a>
