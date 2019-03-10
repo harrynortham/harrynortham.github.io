@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Harry Northam | Front End Development</title>
-	 <meta name="description" content="Check out my latest projects and what i'm currently working on. #html5 #css3 #js">
+	<meta name="description" content="Check out my latest projects and what i'm currently working on. #html5 #css3 #js">
 	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 
 	<!--Responsive image polyfill, for backward compatibility when using responsive images srcset-->
-  <script src="js/picturefill.min.js" async></script>
+	<script src="js/picturefill.min.js" async></script>
 	<!--Include font awesome for some cool icons-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135103432-1"></script>
-<script src="js/script.js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<script src="https://www.googletagmanager.com/gtag/js?id=UA-135103432-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-135103432-1');
-</script>
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-135103432-1');
+	</script>
 
 </head>
+
 <body>
 
 	<header class="main-header">
@@ -34,36 +38,39 @@
 			<li><a href="#">Code Snippets</a></li>
 			<li><a href="#">Github</a></li>
 		</ul>
-	</header><!--/.main-header-->
+	</header>
+	<!--/.main-header-->
 
 	<div class="banner">
-				<img class="logo" srcset="img/harry.png 1x, img/harry@2x.jpg 2x" src="img/harry.png" alt="Harry">
+		<img class="logo" srcset="img/harry.png 1x, img/harry@2x.jpg 2x" src="img/harry.png" alt="Harry">
 		<h1 class="headline">Front End Development</h1>
 		<span class="tagline">HTML, CSS, Javascript</span>
-	</div><!--/.banner-->
+	</div>
+	<!--/.banner-->
 
 	<div class="row">
 		<div class="primary col">
-			<h2>Welcome!</h2>
-			<p>Everything in this city is worth waiting in line for. Cupcake ipsum dolor sit. Amet chocolate cake gummies jelly beans.</p>
-			<p><strong>Car: </strong>Pie apple pie pudding I love wafer toffee liquorice sesame snaps lemon drops. Lollipop gummi bears dessert muffin I love fruitcake toffee pie.</p>
-			<p><strong>Car: </strong>Jelly cotton candy bonbon jelly-o jelly-o I love. I love sugar plum chocolate cake pie I love pastry liquorice.</p>
-			<a class="button" href="#">Learn More</a>
-		</div><!--/.primary-->
+			<h2>This is an offer</h2>
+			<p>If you have clicked the button you won't see this again until the cookie expires.</p>
+			<a class="button" href="javascript:void(0)" id="promoClick">Click to create cookie</a>
+			<div id="demo"></div>
+		</div>
+		<!--/.primary-->
 
 		<div class="secondary col">
 			<h2>Great food</h2>
 			<p>Croissant macaroon pie brownie. Cookie marshmallow liquorice gingerbread caramels toffee I love chocolate.</p>
 			<p>Wafer lollipop dessert. Bonbon jelly beans pudding dessert sugar plum.</p>
 			<a class="button" href="#">Learn More</a>
-		</div><!--/.secondary-->
+		</div>
+		<!--/.secondary-->
 
 		<div class="tertiary col">
 			<h2>How to get here</h2>
 			<p><strong>Plane: </strong>Tiramisu caramels gummies chupa chups lollipop muffin. Jujubes chocolate caramels cheesecake brownie lollipop drag&#233;e cheesecake.</p>
 
 			<!--featured image-->
-		<!--	<figure>
+			<!--	<figure>
 				<img class="icon-location" src="img/location.svg" alt="Location">
 				<img class="feat-img" src="img/treats.svg" alt="Drinks and eats">
 				<figcaption>
@@ -73,18 +80,22 @@
 
 
 			<a class="button" href="#">Learn More</a>
-		</div><!--/.tertiary-->
+		</div>
+		<!--/.tertiary-->
 	</div>
 
 	<footer class="main-footer">
 		<span>&copy;2019 Harry Northam. Made in Gibraltar.</span>
-	<div class="social-icons">
-		<a href="https://www.github.com/harrynortham"><i class="fab fa-github-square"></i></a>
-		<a href="https://www.twitter.com/harrynortham"><i class="fab fa-twitter-square"></i></a>
-		<a href="https://www.linkedin.com/in/harrynortham"><i class="fab fa-linkedin"></i></a>
-		<a href="mailto:harrynortham@icloud.com"><i class="fas fa-envelope-square"></i></a>
-</div>
+		<div class="social-icons">
+			<a href="https://www.github.com/harrynortham"><i class="fab fa-github-square"></i></a>
+			<a href="https://www.twitter.com/harrynortham"><i class="fab fa-twitter-square"></i></a>
+			<a href="https://www.linkedin.com/in/harrynortham"><i class="fab fa-linkedin"></i></a>
+			<a href="mailto:harrynortham@icloud.com"><i class="fas fa-envelope-square"></i></a>
+		</div>
+
+		<script async src="js/script.js"></script>
 	</footer>
 
 </body>
+
 </html>
