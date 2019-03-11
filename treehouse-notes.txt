@@ -1,0 +1,1251 @@
+HTML5 SEMANTICS
+uses sectioning elements tags to build a page like:
+
+Header (can be used in multiple places, example within an article to show title, author name and category)
+Main (only used once per page, content specific to the page inside)
+Section
+article
+Footer (can be used multiple times, example at the bottom of an article to show publish date or comment count)
+Nav (can be used in multiple places, header and footer wherever multiple links)
+Aside (not the main focus of content but is complementary)
+Figure + figcaption (for adding captions below a photo_
+Address (can go within a section block, only to contain an address)
+
+placeimg.com good for placeholder images
+
+always use alt="" in images important for google and accesibility
+using title="" can show a tooltip over an image when hovered
+
+img tag is self closing and doesn't require /
+<img src="smiley.gif" alt="Smiley face" height="42" width="42">
+
+href stands for hypertext reference
+
+Required for a new html page:
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+</body>
+</html>
+
+
+<q></q> q tag is for quotes;
+<blockquote cite="https://facebook.com"></blockquote> used if quoting from another site or
+<cite><a href="https://facebook.com">Mark Zuckerburg</a></cite>
+
+
+The first element inside a <section> should be h1-h6 to indicate what the section is about
+
+Captions under images
+
+<figure>
+<img src="smiley.gif" alt="Smiley face">
+<figcaption>
+A smiley face photo
+</figcaption>
+</figure>
+
+
+<br> - break
+<hr> - horizontal rule to split sections of content, browser will show horizontal line
+<strong> - bold text
+<em> - puts emphasis on a word, same as italic
+<small> - used for dislaimers and copyright, only for short runs of text
+<span> - for grouping a small amount of text ready for styling
+
+
+Route relative path is an href that starts with a forward slash
+
+Mailto with a subject line
+<a href="mailto:harrynortham@icloud.com?subject=Hi%20There!">Email me</a>
+%20 is url encoding for a space
+
+
+ATOM
+Typing html and hitting enter in a new document adds all html code
+Right click on a tab and split right to view two in one page
+Tying img and enter and auto creates img tag
+
+
+GIT 
+create a new repository on website
+follow commands to initiate in folder, creating readme.md and gitignore
+
+git add *  //adds all files
+git add [filename] //only updates with changed file
+git commit -m "Commit message"
+git push origin master
+
+
+
+CSS Basics
+
+html is structural + css is presentational + js behavioural
+
+selector{
+	property: value;
+}
+
+Universal selector - applies to all elements on page
+
+* {
+
+}
+
+Type selector - targeting html tags
+
+p, h1, h2, ul, header, footer
+
+
+id selector: #selector
+class selector: .selector
+
+
+Styles for IDs override those of classes. If we have an element with an ID and CLASS the style in the id will win.
+
+Descendent selector
+
+Header span{
+
+}
+
+or
+
+#selector p{
+
+}
+
+Psuedo-class - a keyword added to a type selector
+
+a:hover
+a:active
+a:link
+a:visited
+
+CSS data type - what values you can use in css, color data types, integers, perecentages, lengths (px, ems, rems)
+
+Units
+
+Absolute unit = pixels
+(will not scale) - more to do with pixel density of device
+
+Percentage value = is measured relative to a parent elements length
+
+EM Units - is a font relative element. If body is 1em = 16px. a child element with 2 em would be 32px
+
+Convert pixel values to EMs. divide pixel value by default (16px) if we need 36px do 36px/16px.
+Styles with EM can compound if multiple parents with EM
+
+REM - is root EM
+Only relative to the HTML element, with no compound issue. more predictable than EMs because they always relate to the root
+
+Font shorthand:
+
+body {
+  font: normal 1em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+Line height!
+Always best to use a unitless value (more predictable than other measurements:
+p{
+line-height: 1.5;
+}
+A unitless line height property is relative to the font size of the element
+
+Padding
+Percentages instead of pixels can be beneficial
+
+Display:
+None - hides a div
+Block - default value, apart from anchor, span,  
+Inline - doesn't span full width, can go next to each other 
+Inline-block - 
+
+
+BOX SIZING
+box-sizing: border-box;
+//puts padding value inside the defined height value instead of adding the two together
+Subtracts borders and padding from all sides from the heights and widths
+Can be defined universally in *{}
+
+CLEARING FLOATS
+clearfix with :after lcear both
+
+
+Linear Gradients
+background-image: linear-gradient(#000, #fff); //default top to bottom
+background-image: linear-gradient(to top ,#000, #fff);
+background-image: linear-gradient(to left ,#000, #fff);
+background-image: linear-gradient(0deg ,#000, #fff);
+background-image: linear-gradient(45deg ,#000, #fff);
+
+Radial Gradients
+background-image: radial-gradient(#000, #fff);
+background-image: radial-gradient(circle, #000, #fff);
+background-image: radial-gradient(circle at top, #000, #fff); //changes position of circle
+Color stops
+background-image: radial-gradient(circle at top, #000, #fff, lightblue);
+background-image: radial-gradient(circle at top, #000 0%, #fff 10%, lightblue 20%);
+
+Transparent gradients - multiple gradients
+
+In CSS3 we can layer multiple background images by separating them with a comma
+
+background: 
+linear-gradient(#ffa949, transparent 90%),
+linear-gradient(0deg, #fff, transparent),
+#ffa949 url('../img/mountains.jpg') no-repeat center;
+
+
+Webfonts
+EOT is propriety to IExplorer
+Woff is web open font format from Mozilla supported by all browsers, compressed and fast
+TTF safari, android and IOS display
+
+Server only uses the file type it needs
+font squirrel is a good place for free fonts
+
+
+Media queries
+(Good video to explain everything: https://teamtreehouse.com/library/adjusting-the-layout-with-media-queries)
+
+@media (max-width: 960px) {
+ //makes changes to the web page whenever the browser is @ or below 960px
+
+}
+
+@media (min-width: 481px) and (max-width: 700px){
+//targets anything between this range
+//combines two expressions
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 768px) {
+
+}
+
+NEED TO ADD a meta tag to document head for media queries to work in mobile
+
+<meta name="viewport" content="width=device-width">
+
+
+Debugging with chrome dev tools
+
+commman shift f within the elements panel and search for .class
+highlights all elements with that class in yellow
+
+font family Lato
+#4c4c4c
+
+.cls enables disables classes on elements
+
+
+
+CSS LAYOUT BASICS
+
+Use normalize.css to reset all browser user stylesheets
+creates a level playground for all designs
+
+Download save and link css file from head
+
+
+Collapsing margin - no margin or padding to stop h1 touching body, can set top margin to zero. Or give parent div some top bottom padding.
+
+
+Centering page content and creating full width header
+
+contianer = max-width 70% margin 0 auto
+<header class="main-header"> //full width
+<div class="container">
+</div>
+</header>
+<div class="main-content"> 
+<div class="container">
+</div>
+</div>
+<footer class="main-footer"> //full-width
+<div class="container">
+</div>
+</footer>
+
+	<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+
+
+
+BUILD WEBSITES MOBILE FIRST
+
+Easier than doing desktop first. Normally just one column
+Add all content before doing any media queries
+
+Best for mobile to be a one columns layout
+
+
+Mobile first approach uses the min-width media querie approach since we are building the website up from narrow screens to wider.
+
+*{
+box-sizing: border-box;
+}
+
+@media(min-width: 769px){
+.container{
+width: 70%;
+max-width: 100px;
+margin:0 auto;
+}
+
+}
+
+
+Sticky footer (this technique only good if footer has a fixed height)
+
+https://teamtreehouse.com/library/creating-a-sticky-footer
+
+
+
+Positioning elements with display block, inline-block inliine
+
+
+Browser adds whitespace between inline elements
+If I have two divs both at 50% they wont stay on the same line because of the whitespace.
+Need to do negative margin or set font size to 0
+
+
+floating images
+
+.float-img{
+
+
+float:left;
+margin-top: 5px;
+margin-right: 25px;
+margin-bottom: 25px;
+padding:10px,
+border: solid 1px #d9e4ea;
+}
+
+
+If elements are floated the browser ignores whitespace
+
+
+Clearing floats:
+
+.clearfix::after {
+content: "";
+display: table;
+clear: both;  //clears any collapsed space either left or right
+}
+
+
+Spaces between columns are called gutters
+
+
+To add a left gutter to all but the first column, you can use this:
+
+
+.col + .col {
+  padding-left: 1em;
+}
+
+To remove the right gutter from the column closest to the right edge of the page, use :last-child
+
+.col:last-child {
+  padding-right: 0;
+}
+
+All together:;
+
+.col {
+  float: left;
+  padding-right: 1em;
+}
+
+.col + .col {
+  padding-left: 1em;
+}
+
+.col:last-child {
+  padding-right: 0;
+}
+
+
+
+ABSOLUTE POSITIONING
+
+items can be positioned using absolute. Parent must contain relative property 
+otherwise item will use the next relative item in the hierachy
+
+FIXED POSITIONING IS RELATIVE TO THE BROWSER
+
+
+
+ALWAYS CHECK Z-INDEX OF FIXED POSITIONS
+
+Moves items on the z axis of the page
+By default items are sorted by where the appear on the page
+
+
+
+
+RESPONSIVE IMAGES
+
+SRC delivers one image to every device
+
+We can use srcset to supply different image sizes to different viewport device sizes.
+
+Because of backward compatibility we can use a javascript polyfill called picturefill.
+
+This will ensure that what we do works on older browsers.
+
+We are using http://scottjehl.github.io/picturefill/
+
+If device is 2x pixel density we will show a higher resolution image
+<img srcset="img/people@1x.jpeg 1x, img/people@2x.jpeg 2x", src="img/people@1x.jpeg" alt="responsive image">
+We can also do responsive images by image width
+<img srcset="img/banner-large.jpg 2048w, img/banner-medium.jpg 1400w, img/banner-small.jpg 800w" src="img/banner-medium.jpg" alt="responsive by width"/>
+
+          <img
+              srcset="photo-@2x.jpg 2x,
+                      photo-@1x.jpg 1x"
+              src="photo-@1x.jpg"
+              alt="Photograph of a flower."
+              />
+
+Need to look at the sizes attribute
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-sizes
+
+Sizes tells the browser how much space the image should take up
+
+
+ART DIRECTION
+
+Using picture to use different aspect raitoo by device:
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture
+
+The <picture> element is a container used to specify multiple source files for a child image element.
+
+
+
+    <picture>
+        <source
+          media="(orientation:landscape)"
+          srcset="banner-large.jpg  2048w,
+                  banner-medium.jpg 1400w,
+                  banner-small.jpg  800w"
+          />
+        <source
+          srcset="banner-square-large.jpg  1000w,
+                  banner-square-medium.jpg 800w"
+          />
+        <img
+          src="banner-medium.jpg"
+          alt="Photograph of Nick Pettit in front of trees."
+          class="banner-image"
+          />
+      </picture>
+
+
+
+
+
+HTML TABLES  
+
+
+Each row can also have a TH aswell as the top of a columnn
+th scope="row"
+th scope="col"
+
+TFOOT
+
+<table>
+<caption>Employee Information</caption>
+    <thead>
+        <tr>
+            <th>Items</th>
+            <th scope="col">Expenditure</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">Donuts</th>
+            <td>3,000</td>
+        </tr>
+        <tr>
+            <th scope="row">Stationary</th>
+            <td>18,000</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th scope="row">Totals</th>
+            <td>21,000</td>
+        </tr>
+    </tfoot>
+</table>
+
+
+
+FORMS
+
+    <form action="index.html" method="post">
+
+<label for="name">Name:</label>  //for matches the ID value of the input
+<input type="text" id="name" name="user_name" />
+<label for="comment">Comment:</label>
+<textarea id="comment" name="user_comment"></textarea>
+<button type="submit">Submit</button>
+      
+    </form>
+
+Use label to describe each input
+
+
+Use fieldsets and legends to group input fields
+
+<form action="index.html" method="post">
+        
+        <h1>Sign Up</h1>
+        
+        <fieldset>
+          
+          <legend><span class="number">1</span> Your basic info</legend>
+          
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="user_name">
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email">
+          
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="user_password">
+        
+        </fieldset>
+        
+        <fieldset>
+          
+          <legend><span class="number">2</span> Your profile</legend>
+          
+          <label for="bio">Biography:</label>
+          <textarea id="bio" name="user_bio"></textarea>
+          
+          <label for="job">Job role:</label>
+          <select id="job" name="user_job">
+            <optgroup label="Web">
+              <option value="frontend_developer">Front-End Developer</option>
+              <option value="php_developer">PHP Developer</option>
+              <option value="python_developer">Python Developer</option>
+              <option value="rails_developer">Rails Developer</option>
+              <option value="web_designer">Web Designer</option>
+              <option value="wordpress_developer">WordPress Developer</option>
+            </optgroup>
+            <optgroup label="Mobile">
+              <option value="android_developer">Android Developer</option>
+              <option value="ios_developer">iOS Developer</option>
+              <option value="mobile_designer">Mobile Designer</option>
+            </optgroup>
+            <optgroup label="Business">
+              <option value="business_owner">Business Owner</option>
+              <option value="freelancer">Freelancer</option>
+            </optgroup>
+          </select>
+        
+        </fieldset>
+
+<input type="radio" id="under_13" value="under_13" name="user_age"> <label>Under</label>
+<input type="radio" id="over_13" value="over_13" name="user_age"> <label>Over</label>
+
+<input type="checkbox" id="development" value="interest_development" name="user_interest">
+          
+        <button type="submit">Sign Up</button>
+        
+      </form>
+
+
+
+CSS Selectors IMPORTANT
+
+
+Attribute Selectors
+
+Target any html element that has an attribute or its value. 
+Helpful for form elements not so much classes or IDs
+
+
+[class] {
+ color: red;
+}
+
+[class="form-contact"] {
+ color: red;
+}
+
+form[class="form-contact"] {
+ color: red;
+}  //specifically targeting something with a class of form-contact inside a form
+
+
+div[id="container"] {
+
+}
+
+input[type="text"]{
+
+}
+
+input[type="placeholder"]{
+
+}
+
+input[type="email"]{
+
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"]{
+cursor:pointer;
+}
+
+
+a[target="_blank"]{
+
+}
+
+img[title="avatar"]{
+ border-radius:50%; 
+}
+input[type="password"]{
+ color: #ccc; 
+}
+
+
+DRY CSS classes - Don't repeat yourself!
+
+.br{  //can add this class anywhere we require a border radius
+border-radius: .5em;
+}
+
+.avatar{
+display:block;
+margin: 0 auto 2em;
+}
+
+.rounded{
+border-radius: 50%;
+}
+
+.btn{
+cursor: pointer;
+font-size: .875em;
+color: #fff;
+padding-left: 20px;
+padding-right: 20px;
+text-transform:uppercase;
+}
+
+.btn:hover{
+opacity: .75;
+}
+
+.default{
+background-color: #52bab3;
+}
+
+.error{
+background-color: #ff784f;
+}
+
+@media (min-width: 769px){
+.inln {
+width:auto;
+display:inline-block;	
+}
+}
+
+
+CSS COMBINATORS
+
+DIrect child selector - targets direct elements that are a child of a form
+
+form > a{
+font-size: .7em;
+}
+
+A plus sign combinator is an adjacent sibling selector. Can target elements that immediately follow another
+
+
+.btn + .btn{
+margin-left: 20px;
+}
+
+A general sibling combinator.The ~ combinator targets all the specified siblings that follow an element
+
+h1 ~ label{
+background:tomato;
+color:white;
+}
+
+Psuedo classes:
+
+:first-child
+:last-child
+
+span:only-child{
+}
+//we can target the element if its the only child of an element. If there is one item, do this
+
+li:empty{
+background:red;
+}
+//if the list item has nothing within it show a red background
+
+
+
+SUBSTRING MATCHING ATTRIBUTE SELECTORS
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+^ tells the browser to match a piece of code that’s at the beginning of an attribute's value
+$ matches a piece at the end of an attribute's value.
+* matches any part of an attribute's value
+
+a[href^="http://"]{
+
+} //begins with selector
+
+a[href$=".pdf"]{
+
+} //ends with selector
+
+a[href*="blog"] {
+  border-bottom: solid 2px steelblue;
+} //contains selector
+
+Element States Pseudo-Classes
+
+:disabled
+:checked
+
+
+
+:NTH-CHILD
+
+li:nth-child(odd)
+li:nth-child(even)
+
+li:nth-child(3) //targets the third list item
+li:nth-child(7) //targets the seventh list item
+
+li:nth-child(an+b)  
+//B is an offset value. The first value we want to select
+//A value tells what the cycle value is
+
+li:nth-child(2n+3) //start from third item and each second item
+
+li:nth-child(3n)  //every third value from the beginning
+
+We can also use negative values to target first items in a list, featured items
+
+li:nth-child(-n+3) //selects first 3 items
+
+
+
+:NTH-OF-TYPE  //more flexible than nth child
+
+div:nth-of-type(4){  //target the 4th div thats a child
+
+}
+
+div:nth-of-type(even){
+
+}
+
+
+div:nth-last-of-type(1){ //picks the last div
+
+}
+
+div:nth-last-of-type(3){ //picks the third last div
+
+}
+
+
+
+:ROOT AND :TARGET
+
+
+:TARGET if the URL contains the div id of an element on a page we can set some styling to that div. Handy for navigation on single pages
+
+
+We can hide and show divs using TARGET. can have a website in one single page
+
+
+:NOT()  psuedo class
+
+
+div:not(#col-a){
+
+}
+
+div:not([type="submit"]){
+
+}
+
+.col:not(:first-child){  //useful for targeting first
+
+}
+
+
+Psuedo-elements ::first-line and ::first-letter
+
+::first-line  //allows to styling the first line only VERY COOL
+
+
+::before  //generated content
+::after   //we can add text or image after
+
+.class::before{
+content: "JPG - Meow";
+font-size:.75em;
+}
+
+.class::after{
+content: url(img/myimage.png);
+margin-left: 8px;
+}
+
+
+The attr() CSS Function
+
+.d-loads a::after{
+content: attr(href);
+display: inline-block;
+}
+//adds the links title attribute as text after the element
+
+
+
+
+
+FLEXBOX - Use for layouts columns etc
+
+Is a set of css properties that provide flexible layouts for responsive without any strange browser behaviour.
+
+
+Flex Containers
+Flex Items
+
+.container{
+display:flex; //by default puts items on same line left to right. Flex is block we can also show "inline-flex"
+height 300px; //flex items will stretch from top to bottom
+}
+
+<div class="container">
+
+<div class="item-1">Item 1</div>
+<div class="item-2">Item 2</div>
+<div class="item-3">Item 3</div>
+<div class="item-4">Item 4</div>
+</div>
+
+
+Flexbox layout
+
+
+By default 
+flex-direction: row;  //left to right. can be change with row-reverse
+
+flex-direction: column. //lays out the columns in 100% width block layout. Good for mobile first, streches edge to edge
+
+Good for navigation only need to change the flex-direction in media query
+
+flex-direction: column-reverse. //does everything from bottom to top
+
+
+
+flex-wrap: wrap;  //always flex items to wrap to the next line when no more space.
+
+
+Distributing space inside a flex container
+
+justify-content : flex-start  //default value
+justify-content: flex-end // aligns flex items end
+jusify-content: center;
+
+justify-content: space-between //gives equal space between the items
+justify-content: space-around // will also give space to the first and last items
+
+
+https://teamtreehouse.com/library/distributing-space-inside-a-flex-container  //good video for naviagtuin
+
+
+Order value
+
+Can give a child item an order value to move around.
+
+.child{
+
+order: 2
+}
+
+
+.child{
+
+order: -1 //moves box to first position
+}
+
+
+Growing Flex items
+
+By default flex items don;t take up all space
+flex-grow: 0; this is the default value
+
+Flex-grow: 1; Items adjust to the width: take up all space.
+
+IF we give an single item:
+
+flex-grow: 3; it will be bigger than the other columns.
+
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.item{
+  flex-grow: 1;
+  flex-basis: 200px; /*minimum widh for items, will break onto new line if narrower*/
+}
+
+
+Test flex in codepen: https://codepen.io/harrynortham/pen/qvddKp
+
+
+
+/*
+Centers a div in the middle good for my Homepage photo
+
+.container{
+  display:flex;
+  height: 100vh;
+min-height:
+  justify-content:center;
+
+}
+.item{
+align-self: center;
+}
+*/
+
+
+//CREATING CARDS WITH FLEX. IMPLEMENT ON TEST SITE
+https://teamtreehouse.com/library/aligning-items-to-the-bottom-of-a-column
+
+
+//CREATING STICKY FOOTER
+https://teamtreehouse.com/library/creating-a-sticky-footer-with-flexbox
+
+USE FLEXBOX WHEREVER POSSIBLE
+
+
+
+
+INTRODUCTION TO TERMINAL COMMANDS
+
+By defaults terminals run a program called shell
+On mac/unix the program is called BASH
+
+Command history. up/down keys
+
+ls lists files in directory
+ls - a  
+ls -all shows hidden files
+ls -t sorts them by date
+whoami - prints name of current user account
+ctrl + l - clears the screen
+ctrl + c - interrupts program
+cd - changes directory
+cd .. - up one folder
+type history to see all commands
+
+Press tab to autocomplete rest of file name - stops have to write out fullcommands or file names
+
+pwd - print working directory
+
+
+Absolute paths
+
+Root directory doesnt have a name it is just /
+
+cd / jumps straight to root directory
+
+an absolute path is one that starts at the root directory
+
+cd /dev - from root
+
+cd /etc - from root
+
+cd /home/treehouse/workspace
+
+cd /etc - jumps back to etc from root
+
+Tilde ~ starts from home directory: ls ~ or ls ~/etc
+
+wildcard expansion 
+echo *txt
+cat *txt
+
+can find all files that end a certain way
+echo re*
+echo re*.txt
+
+
+LESS COMMAND
+
+type less followed by the name of the file to see all off page contents
+Use arrow keys to go up and down
+when you want to quit press the q key
+
+
+cp command lets us copy documents
+
+cp bird.txt pigeon.txt
+
+cp bird.txt mall/
+
+cp -r offices/ more_offices  //copies recursively meaning copies subdirectories also
+
+
+How to changes a files name
+
+mv bird.txt sparrow.txt
+
+mv cart.txt mall/  //moves a file to a directory
+
+mv pidgeon.txt sparrow.txt mall/    //moves multiple documents into directory
+
+rm command equals remove. there is no undo after this
+
+rm bird.txt  //deletes the file, no recovery
+
+rm -r more_offices  //removes directory and all subdirectories
+
+mkdir park //creates a directory
+
+mkdir -p park/playground/toys  //creates directory and subdirectories
+
+Always stick to lowercase letters in file names
+Avoid spaces at all costs
+
+Stick with underscores for file names
+
+rm -r more/ hello/ there/    //removes three file names
+
+man //is manual you can use this before any command. Uses less so type q to get out
+
+
+FIND command to search through directory
+find -name "*.txt" 
+
+grep 'Mac' terminal.txt //searches a file for all text with word mac
+
+vi myfile.txt  is a text editor
+also vim myfile.txt
+
+
+or nano which is much better
+
+nano hello.txt
+
+
+GIT INTRODUCTON
+
+Git is a distributed version control system. If main repo is lost other computers can repair repo.
+
+Git holds all previous versions of a project. These are marked by commits
+
+git add [filename]
+git add --all  //add all files
+git commit -m "commit message"
+git push -u origin master
+
+git status //see an overview of changes and what needs to be commited
+
+git log -p  //see the changes of commit
+git diff  //see whats different or changed, if changes are already staged nothing will show
+
+git diff --staged
+
+Removing files
+
+git rm tin.html //remove from git and working directory
+
+Renaming files
+
+git mv silver.txt silver.html  //rename a file committed with wrong extension
+
+Unstaging changes
+
+git reset HEAD [filename] //unstages change that was ready to commit
+
+Discarding File Modifications
+
+git checkout -- medals.html  //will replace file with previous version
+
+git checkout -- medals.html //also brings back a deleted file
+
+Undo a commit
+
+git log
+git revert 1d8e1  //revert specific commit
+
+git revert HEAD //revert the most recent commit
+
+
+Cloning a Repository
+
+git clone [repo url] myclone  //clone repo into directory myclone
+
+
+Pulling changes
+
+git remote //get a list of git repos default is called origin
+
+git pull origin //pulls changes from origin
+
+git pull origin [branchname(normally master)]
+
+
+ADD a remote repo
+
+Git remote add http://myrepo.github.io/repo   //adds a new remote repo
+
+
+git push -u origin master  //only required first time
+
+git push
+
+
+NEED TO LEARN BRANCHES AND MERGING FILES
+
+
+
+
+
+CSS Transitions and Transforms
+
+
+transition-duration: 1s;  //required property for transitions
+//when only specific transition duration it applies to all properties.
+
+transition-property: all; //this is the default, can be slow because browser checks for all
+
+transition-property: background; //only transitions background
+transition-property: color; // only color etc
+transition-property: opacity;
+
+This is a list of all properties that can be animatable:
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties
+
+
+Transitioning multiple properties
+
+transition-property: background, border-radius, color;  //comma separated list of properties
+
+transition-duration: 1s, .8s, 5s; //multiple durations
+
+
+Control a Transition's Start Time with transition-delay
+
+transition-delay: 1s; //can make an element transition after others
+transition-delay: 1s, 2s, 3s; //can take mutliple values targeted at each property in order
+
+Change a Transition's Speed with Timing Functions
+
+transition-timing-function: ease-in-out, ease-out;
+
+
+Transition shorthand
+
+transition: opacity .3s ease-out, background .4s ease-in .3s, 
+
+transition: [property] [duration] [timing function] [delay]
+
+
+
+Transforms 2D
+
+transform: rotate(2deg); 
+transform: skewY(-5deg); //good for creating diagonal images
+
+
+Changing the Transform Position with transform-origin
+
+By default transform origin is the center of the image
+we can change this
+transform-origin: 50% 50%; //by default center
+
+transform-origin: 0 0; scales from top left corner
+transform-origin: top-left; //
+transform-origin: bottom-right; //
+
+More apparent when doing a rotation
+
+
+
+Moving Content with translate()
+
+transform: translateX(150px);  //moves item 150px left 
+transform: translateY(150px);  //moves item 150px down
+transform: translateX(100%); //moves it 100% to the right, 100% being its total width
+
+
+
+Creating an image slide:
+
+https://teamtreehouse.com/library/creating-a-slide-transition
+
+Could be good for creating a square grid games matrix
+
+
+Combining transforms:
+
+transform: rotate(-5deg) scale(1.1);
+
+
+Custom Timing Functions with cubic-bezier()
+
+You can create custom timing functions instead of linear, ease-in ease-out, ease-in-out
+
+cubic-bezier.com
+
+
+
+Understanding 3D Transforms
+
+perspective: 700px;  //creates illusion of depth can be pixels ems or rems
+//enables a 3d space for children elements
+
+transform: rotateY(30deg);
+
+transform-style: preserve-3d;
+
+rotate3d(x,y,z,angle);
+
+https://teamtreehouse.com/library/create-a-flipping-animation-with-3d-transform-properties
+
+Flipping animation very cool and usable for projects
+
+
+perspective origin
+perspective-origin: bottom-left;  //change the viewing angle of 3d elements
+
+
+Creating a Consistent Depth Perspective
+
+We can move perspective: 700px; to the parent contain for each image. instead of the parent of all images
+
+backface-visibility: hidden // conceals the backside of a 3d transformed element
