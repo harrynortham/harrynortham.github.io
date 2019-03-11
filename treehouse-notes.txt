@@ -1249,3 +1249,22 @@ Creating a Consistent Depth Perspective
 We can move perspective: 700px; to the parent contain for each image. instead of the parent of all images
 
 backface-visibility: hidden // conceals the backside of a 3d transformed element
+
+
+
+SASSS!!!!
+
+
+We can convert a .scss file to .css using sass style.scss style.css
+
+We can set sass to compile automatically any changes
+Having two directories sass and css
+
+command:
+sass --watch scss:css
+
+
+Declaring and Using Variables in sass
+
+Variable names should be meaningful and understandable
+

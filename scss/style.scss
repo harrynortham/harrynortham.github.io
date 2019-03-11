@@ -1,3 +1,11 @@
+$color-primary: #3acec2;
+$color-secondary: #9a8cde;
+$color-heading: #384047;
+$color-text: #576366;
+
+$color-bg: #f4f4f4;
+
+$font-stack-primary: 'Varela Round', sans-serif;
 /* =================================
   Base Element Styles
 ==================================== */
@@ -6,14 +14,14 @@
 }
 
 body {
-  font-family: "Varela Round", sans-serif;
+  font-family: $font-stack-primary;
   line-height: 1.6;
-  color: #576366;
+  color: $color-text;
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: #f4f4f4;
+  background: $color-bg;
 }
 
 ul {
@@ -33,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #384047;
+  color: $color-heading;
 }
 
 h2,
@@ -60,12 +68,11 @@ figcaption {
   line-height: 1.5;
   color: #fff;
   padding: 1em;
-  background: rgba(19, 43, 102, 0.85);
+  background: rgba(19, 43, 102, .85);
   position: absolute;
   bottom: 0;
   width: 100%;
 }
-
 /* =================================
   Base Layout Styles
 ==================================== */
@@ -100,7 +107,6 @@ figcaption {
 .main-nav a:hover {
   color: #eee;
 }
-
 /* ---- Layout Containers ---- */
 .main-header {
   padding-top: 0.5em;
@@ -116,7 +122,7 @@ figcaption {
 .banner {
   color: #fff;
   background: #3acec2;
-  background: linear-gradient(90deg, #3acec2, #9a8cde);
+  background: linear-gradient(90deg, $color-primary, $color-secondary);
   padding: 3.2em 0;
   margin-bottom: 20px;
 }
@@ -147,20 +153,19 @@ figcaption {
 }
 
 .main-footer .social-icons a:hover {
-  color: #3acec2;
+  color: $color-primary;
 }
-
 /* ---- Page Elements ---- */
 .logo {
   width: 190px;
   border-radius: 50%;
-  border: 15px solid rgba(0, 0, 0, 0.1);
+  border: 15px solid rgba(0, 0, 0, .1);
   transition-duration: 0.5s, 0.5s;
   transition-property: border;
 }
 
 .banner:hover .logo {
-  border: 10px solid rgba(0, 0, 0, 0.18);
+  border: 10px solid rgba(0, 0, 0, .18);
 }
 
 .headline,
@@ -184,7 +189,7 @@ figcaption {
   color: #fff;
   text-align: center;
   padding: 0.625em 1.25em;
-  background: #3acec2;
+  background: $color-primary;
   border-radius: 0.35em;
   align-self: flex-start;
   transition-duration: 0.5s;
@@ -192,17 +197,16 @@ figcaption {
 }
 
 .button:hover {
-  background: #9a8cde;
+  background: $color-secondary;
 }
-
 /* =================================
   Media Queries
 ==================================== */
 @media (min-width: 769px) {
   .col,
-.main-header,
-.main-nav,
-.row {
+  .main-header,
+  .main-nav,
+  .row {
     display: flex;
   }
 
@@ -227,7 +231,7 @@ figcaption {
     margin: 1%;
     background: white;
     border-radius: 0 0 4px 4px;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   }
 
   .button {
@@ -243,6 +247,5 @@ figcaption {
   .col {
     flex: 1;
   }
-}
 
-/*# sourceMappingURL=style.css.map */
+}
