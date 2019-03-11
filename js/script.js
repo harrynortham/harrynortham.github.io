@@ -1,4 +1,5 @@
 /*Toggle hamburger menu links*/
+
 function burgerNavigationToggle() {
   var x = document.getElementById("myLinks");
   if (x.style.display === "block") {
@@ -22,6 +23,7 @@ function createCookie(name,value,days) {
 
 
 /*Add a promo popup, hide for X days when clicked*/
+
 document.getElementById('promoClick').addEventListener("click", promoCookieSet);
 
 function promoCookieSet() {

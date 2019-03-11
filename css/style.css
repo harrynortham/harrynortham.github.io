@@ -40,6 +40,8 @@ h3 {
 
 a {
   text-decoration: none;
+  transition-property: color;
+  transition-duration: .4s;
 }
 
 img {
@@ -111,7 +113,7 @@ figcaption {
 .banner {
   color: #fff;
   background: #3acec2;
-  background: linear-gradient(90deg, rgba(58, 206, 194), rgba(58, 206, 194, .5));
+      background: linear-gradient(90deg, rgba(56, 200, 192), rgba(52, 2, 194, .5));
   padding: 3.2em 0;
   margin-bottom: 20px;
 }
@@ -124,11 +126,10 @@ figcaption {
 }
 
 .main-footer {
-  border-top: 1px solid #e5e5e5;
-  background: white;
   padding: 2em 0;
   margin-top: 20px;
   flex: 1;
+  color: #bbb;
 }
 
 .main-footer .social-icons {
@@ -139,6 +140,11 @@ figcaption {
 
 .main-footer .social-icons a {
   padding: 0 .1em;
+  color: #bbb;
+}
+
+.main-footer .social-icons a:hover{
+  color: #3acec2;
 }
 
 /* ---- Page Elements ---- */
@@ -146,6 +152,12 @@ figcaption {
   width: 190px;
   border-radius: 50%;
   border: 10px solid rgba(0, 0, 0, .2);
+  transition-duration: 1s;
+  transition-property: border;
+}
+
+.logo:hover {
+border: 15px solid rgba(0, 0, 0, .1);
 }
 
 .headline,
@@ -171,6 +183,12 @@ figcaption {
   background: #3acec2;
   border-radius: .35em;
 	align-self: flex-start;
+  transition-duration: .5s;
+  transition-property: background;
+}
+
+.button:hover{
+  background: rgba(52, 2, 194, .5);
 }
 
 /* =================================
@@ -205,6 +223,8 @@ figcaption {
     flex-direction: column;
     margin: 1%;
     background: white;
+    border-radius: 0 0 4px 4px;
+box-shadow: 0 2px 0 rgba(0,0,0,0.1);
   }
 
   .button {
