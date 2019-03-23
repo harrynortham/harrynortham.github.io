@@ -1,0 +1,34 @@
+// Variables --------------------------/
+
+// Colors
+
+$color-primary: #3acec2;
+$color-secondary: #9a8cde;
+$color-heading: #384047;
+$color-text: #576366;
+$color-bg: #f4f4f4;
+$black: black;
+$white: white;
+
+$base: #3acec2;
+$base-dark: darken($base, 25%);
+$base-light: lighten($base, 25%);
+
+$complement: complement($base);
+$complement-dark: darken($complement, 25%);
+$complement-light: lighten($complement, 25%);
+
+// Fonts
+
+$font-stack-primary: 'Varela Round', sans-serif;
+
+// layout
+
+$max-width: 1000px;
+
+// Breakpoints
+
+$break-xs: 575px;
+$break-s: 576px;
+$break-m: 768px;
+$break-l: 992px;

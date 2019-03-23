@@ -1266,5 +1266,827 @@ sass --watch scss:css
 
 Declaring and Using Variables in sass
 
+&variable: #344334;
+
 Variable names should be meaningful and understandable
+
+
+Nested Selectors
+
+Shouldn't nest too deeply, no more than two layers
+
+Use the Ampersand to Reference Parent Selectors
+
+&:hover whilst nested adds hover psuedo class to parent
+
+.btn {
+  text-align: center;
+  padding: 0.625em 1.25em;
+  border-radius: 0.35em;
+  align-self: flex-start;
+  transition-duration: 0.5s;
+  transition-property: background;
+  &-primary{
+    color: #fff;
+    background: $color-primary;
+  }
+  &-primary:hover{
+    background: $color-secondary;
+  }
+}
+
+
+Mixins
+
+They let you break CSS down into modular chunks that you can reuse anywhere in your stylesheets. Being able to do this helps us to avoid writing repetitive code.
+
+@mixin border-rounded-grey{
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+@include border-rounded-grey
+
+
+Mixin is like a variable with multiple properties
+
+
+Passing content blocks to mixins
+
+
+$btn-background: #dc143c;
+
+
+@mixin button{
+font-size: 1.25em;
+background-color: $btn-background;
+@content;
+}
+
+a{
+@include button{
+color: #f0f8ff;
+}
+}
+
+
+Extend the Properties of Selectors
+
+
+.btn{
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  border-radius: 0.35em;
+}
+
+.btn-callout {
+  @extend .btn;
+  font-size: 1.1em;
+  background-color: $color-secondary;
+}
+
+.btn-info {
+  @extend .btn;
+  font-size: 0.85em;
+  background-color: $color-primary;  
+  margin-top: auto;
+}
+
+
+Extend Placeholder Selectors
+
+
+When you extend regular selectors, like classes and IDs, they get output to CSS. Sass has a special type of selector, called a placeholder selector, that won't appear in the CSS output unless extended.
+
+%clearfix {
+&::after{
+content: '';
+display: table;
+clear: both;
+}
+}
+
+
+%btn{
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.75em 1.5em;
+  border-radius: 0.35em;
+&:hover{
+color:white;
+opacity: 0.8;
+}
+&:active{
+opacity: initial;
+}
+}
+
+.btn {
+&-callout {
+  @extend %btn;
+  font-size: 1.1em;
+  background-color: $color-secondary;
+}
+
+&-info {
+  @extend %btn;
+  font-size: 0.85em;
+  background-color: $color-primary;  
+  margin-top: auto;
+}
+}
+
+Comments
+
+single line comments can be written using two forward slashes
+
+// This is a comment -------------------------- /
+// This is a comment also
+
+multiline comments uses two forward slashes on each line
+
+Comments in sass aren't visible in CSS output which is nice
+
+
+
+
+Separate Your Stylesheet Into Partials
+
+
+Sass partials let you split your stylesheet into separate files. They help modularize your CSS and keep things easier to maintain. Each partial is a single file and is like a small piece of the big CSS puzzle; it contains a portion of your stylesheet.
+
+
+Example files:
+
+CSS Reset
+Variables
+Base Styles
+
+
+a partial file should begin with an _ underscore
+
+partials/_variables.scss
+
+we then have to import the file
+
+@import 'partials/variables';  // scss extension and underscore not required
+
+import multiples can be separated with comma
+
+@import 'partials/variables',
+        'partials/mixins';
+
+
+
+SMACSS - Scalable and Modular Architecture for CSS
+
+With SMACSS, we divide our styles into fives categories: base, layout, modules, states, and themes. Each of these categories come with a set of usage rules.
+
+Base - define what elements look like by default, resets and defaults for selector
+Layout - define layout styles for major sections of a page, header footer sidebar or grid
+Modules - where styles are written for each module as stand-alone, resuable components
+States - where we define styles for states of modules. hidden active collapse expanded states of modules
+Themes - optional
+utilities
+application.scss
+
+Read https://smacss.com for full guide on laying out css files
+and https://teamtreehouse.com/library/modular-css-with-sass/smacss-and-sass/smacss-in-our-workflow
+
+
+NESTED MEDIA QUERIES
+
+.img-featured {
+  width: 165px;
+  border: 4px solid $white;
+  border-radius: 50%;
+  margin-top: 75px;
+  position: relative;
+  z-index: 100;
+  @media (max-width: 575px) {
+    display: none;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  @media (min-width: 768px) {
+      @include center;
+  }
+}  
+
+Keeps media queries tidy and attached to the element we create. Keeps things maintainable
+
+
+COLOR FUNCTIONS
+
+$base: #3acec2;
+$base-dark: darken($base, 25%);
+$base-light: lighten($base, 25%);
+
+$complement: complement($base);
+$complement-dark: darken($complement, 25%);
+$complement-light: lighten($complement, 25%);
+
+header {
+	background-color: $base;
+}
+
+
+More advanced icons: https://teamtreehouse.com/library/advanced-sass/advanced-functions/advanced-color-functions
+
+
+CUSTOM FUNCTIONS
+
+Only use when need to calculate a something throughout the site. Keep functions simple.
+
+
+@function px-to-pc($target, $context: $max-width){
+
+@return ($target / $context) * 100%;
+
+}
+
+.test{
+width: px-to-pc(400px);
+}
+
+
+CREATE A FUNCTION FOR FLEX BOX
+https://teamtreehouse.com/library/create-a-function-for-flexbox-layout
+
+//VERY COOL NEED TO USE FOR MY FLEX LAYOUTS
+
+
+
+Creating Powerful Mixins
+
+
+Like functions, mixins also accept parameters. This makes mixins even more powerful and flexible styling tools!
+
+
+@mixin sexy-border($color, $width) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+
+
+
+Smarter Mixins with null and Keyword Arguments
+
+
+Sass supports a null data type that lets you define optional mixin parameters without creating unnecessary CSS output. Also, remembering the correct order of arguments can be tricky. Sass solves this by allowing you to name the arguments you pass to a mixin, using keyword arguments.
+
+// $brdr is an optional parameter
+
+@mixin sexy-border($color, $width, $brdr: null) {
+  border: {
+    color: $color;
+    width: $width;
+    style: dashed;
+    border: $brdr;
+  }
+}
+
+p { @include sexy-border(blue, 1in); }
+
+
+p { @include sexy-border($color: blue, $width: 1in); }
+
+
+Add Conditional Logic to Your Stylesheets
+
+
+You've seen how Sass introduces many of the core features of programming into your CSS workflow. Conditionals are no exception. In programming, conditional statements let you control the flow (or behavior) of your program. Conditionals in Sass output blocks of styles only under certain conditions.
+
+@if (expression) {
+
+	//do something
+
+}
+
+  .tagline {
+    font-size: 1.4em;
+    color: $complement;
+
+	 
+@if (1 > 100) {
+	background: green;
+}
+
+@if (1 + 1 == 2){
+background: red;
+}
+
+  }
+
+
+Storing values in maps.
+
+Sass maps provide a flexible way to keep track of data by associating a name with a particular value. 
+
+Data stored in key-value pairs
+
+$breakpoints: (
+'xs': 575px,
+'sm': 576px,
+'med': 768px,
+'lg': 992px,
+);
+
+map-get($breakpoints, 'xs')
+
+Will return 575px
+
+$value: map-get($breakpoints, $break);
+
+
+
+Write Loops with @for
+
+
+How to auto generate column classes with a for loop
+https://teamtreehouse.com/library/modular-css-with-sass/sass-grid-system/grid-configuration
+
+@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+
+compiles to
+
+.item-1 {
+  width: 2em; }
+.item-2 {
+  width: 4em; }
+.item-3 {
+  width: 6em; }
+
+
+
+Loop Through Lists with @each
+
+
+//make a list
+
+$teachers: ('andrew','alena','joel','daniele','nick');
+
+@each $teacher in $teachers {
+	.teacher-#{$teacher} {  //interpolation
+background-image: url('img/#{$teacher}.jpg');
+}
+
+}
+
+
+$themes: (
+'ent': #111,
+'arch': #333,
+'edu': #444,
+);
+
+
+each $theme, $color in $themes {
+	.icn-#{$theme}{
+color: $color;
+}
+}
+
+
+
+Handling Errors with @error and @warn
+
+//error 
+
+@if $value == null {
+	@error "#{$break} is not a valid breakpint name"
+}
+
+//warn logs it to console, 
+
+@if $value == null {
+	@warn "#{$break} is not a valid breakpint name"
+}
+
+
+Debugging Sass with Sourcemaps
+
+we can view sourcemaps in chrome dev tools
+
+Sass creates a sourcemap to help you see the original Sass/SCSS source while debugging in the browser. Sourcemaps contain information that links each line of your output CSS to the Sass/SCSS source, right down to the partial file and line of code.
+
+We can check in chrom the scss rules
+
+If not working on local machine it is because of the sourcemap using absolute urls
+
+
+
+
+Unit 5 - An Interactive Photo Gallery
+
+Javascript
+
+Use react native to publish to app store
+
+Ecmascript approve language proposals - currently ES6
+
+
+ES6 / ES2015 - Vanilla javascript
+
+Flow (facebook) or typescript (microsoft) need to be compiled before use in browser
+
+Dart (google) - syntax different to vanilla needs to be compiled
+
+Every browser has a javascript engine and can run JS (parse and execute)
+
+
+Tools used by javascript developers
+
+Atom built by github
+
+Linters and code formatters (ESLint and Prettier)
+
+Build Tools
+
+Package managers - NGM , YARN - keep track of all packages addons used in the project
+
+Module Bundlers - Combine all source code and dependencies into a single minified file- Webpack, rollup and browserify
+
+Compilers - If using new features not available in browsers (like JSX) they need compiling. Typescript and CoffeeScript need compiling. 
+Babel is the most popular JS compiler.
+
+Task runners - Javascript define and run common tasks saving time programmming JS.  Minify, Running tests, Starting a dev server, Auto reload browser when JS saved, compiling source code. Gulp and NPM are both popular task runners. NPM is now preferred.
+
+Frameworks - React most popular JS libraries, VUE popular and Angular by Google
+
+They have a CLI - command line interface
+
+
+Run webserver local machine
+
+HTTPS Server
+if you haven't already installed Node.js, visit the site below and lay it down
+https://nodejs.org/en/download/
+
+next, open terminal or cmd and install the http-server module globally on your machine
+npm install http-server -g
+run it using CLI (specifying the folder you'd like to serve files from)
+
+http-server ./[yourfolder] -p 1337
+
+now you should be able to access your files (via something like http://localhost:1337/myfile.html) in a web browser.
+
+
+JAVASCRIPT BASICS
+
+alert('hello');
+document.write('hello');
+console.log('hello');
+
+
+Variables
+
+var score;
+var score = 0;
+
+When we place something into a variable we say assigning value to variable
+
+var message = "heelo";
+
+message = "variable changed to this";
+
+Strings Numbers - One in quotes the other outside quotes
+
+
+PROMPT
+
+prompt('What is your name?');
+
+Opens a prompt dialog box popup
+
+var answer = prompt('What color is the moon?'); //creates a prompt and stores answer to variable
+
+
+
+CONCATENATION - Combining Strings together
+
+'one string ' + ' another string'
+
+var name = "Dave";
+var message = "Hello " + name;
+
+
+message += "we added to the variable"  //shorthand for added to a variable
+
+
+.length
+var str = '9 letters';
+alert( str.length ); 
+// opens an alert dialog with the number 9
+
+
+.toUpperCase()
+var str = 'upper';
+alert( str.toUpperCase() ); 
+// opens an alert dialog with the string 'UPPER'
+
+
+
+.toLowerCase()
+var str = 'LOWER';
+alert( str.toLowerCase() ); 
+// opens an alert dialog with the string 'lower'
+
+
+//message is an object, length is a property
+message.length
+
+
+A method is something you can do with an object.
+
+Objects have methods, actions they can perform
+
+
+WORKING WITH NUMBERS
+
+
+score = score + 100;  //updating a variable
+or 
+score += 100
+
+
+parseInt(string); //converts strings to integer numbers
+
+AN integer is a whole number without decimals
+
+parseFloat('3.14'); //converts a string to a floating point
+
+
+THE MATH OBJECT
+
+Used to perform complex math functions
+
+Math.round(2.2) //rounds up or down
+
+Math.floor(x) // rounds down
+Math.ceil(x) // rounds up
+
+Random
+
+Math.random()
+
+Math.floor( Math.random() * 6 ) + 1
+
+
+CLEAR
+
+clear()  //clears values in console
+
+
+
+CONDITIONAL STATEMENTS
+
+var answer = prompt('What programming language has gems?');
+
+if(answer.toUpperCase() === 'RUBY') {
+	document.write('that is the correct answer');
+}else{
+	document.write('that is the wrong answer');
+}
+
+// we make everything uppercase so that things match even when user inputs other caps
+
+Comparison Operators
+
+== //equal to, but too loose
+=== // best to use, strict tests equality of two things, compares data type and value
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators
+
+!== //not equal to, strict, best to use
+
+if(10 !== 9){
+
+}
+
+var correctGuess = false;
+var randomNumber = Math.floor ( Math.random() * 6 ) + 1;
+var guess = prompt ('I am thinking of a number between 1 and 6. What it is?');
+if (parseInt(guess) === randomNumber ) {
+correctGuess = true;
+}
+
+if(correctGuess){
+  document.write ('<p>You guessed the Number!</p>');
+} else {
+  document.write ( '<p>Sorry!. The number was ' + randomNumber + '</p>');
+}
+
+//by default responses from prompts are strings so we use parseInt to convert to integer
+
+
+Booleans
+
+Can only be one of two values True or False
+
+PROGRAMMING MULTIPLE OUTCOMES
+
+
+var correctGuess = false;
+var randomNumber = Math.floor(Math.random() * 6 ) + 1;
+var guess = prompt('I am thinking of a number between 1 and 6. What is it?');
+if (parseInt(guess) === randomNumber ) {
+  correctGuess = true;
+} else if ( parseInt(guess) < randomNumber ) {
+  var guessMore = prompt('Try again. The number I am thinking of is more than ' + guess);
+  if (parseInt(guessMore) === randomNumber) {
+      correctGuess = true;
+  }
+} else if ( parseInt(guess) > randomNumber ) {
+   var guessLess = prompt('Try again. The number I am thinking of is less than ' + guess);
+  if (parseInt(guessLess) === randomNumber) {
+      correctGuess = true;
+  }
+}
+if ( correctGuess ) {
+    document.write('<p>You guessed the number!</p>');
+} else {
+    document.write('<p>Sorry. The number was ' + randomNumber + '.</p>');
+}
+
+
+Combining Multiple Tests Into a Single Condition
+
+&& and operator
+|| or operator
+
+
+FUNCTIONS
+
+Declaring the function
+
+function goToCoffeeShop() {
+	alert ('Espresso is on the way!');
+}
+
+//no semi colon after a function
+
+//call a function
+goToCoffeeShop();
+
+
+//functions are normally placed at the top of the file
+
+Function expression
+
+var alertRandom = function () {
+alert(randomNumber);
+};
+anonymous function we add a function into a variable.
+
+alertRandom();
+
+Getting information from a function:
+
+function giveMeFive() {
+  return 5;
+}
+// prints 5 to the console
+console.log( giveMeFive() );
+
+
+
+Function Arguments 
+
+function goToCoffeeShop(drink,food) {
+	alert (drink + 'and' + food + ' are on the way!');
+}
+
+goToCoffeeShop("Coffee","Bagel");
+
+
+VARIABLE SCOPE
+
+Best practice not to use global variables where possible
+
+
+Is non a number - function checks if a value is a number
+
+isNaN('nine') // true 
+
+
+send error to console
+
+throw new Error('error message');
+
+
+
+LOOPS, ARRAYS AND OBJECTS
+
+
+Loops are a way to repeat certain actions
+
+While loop
+
+
+function randomNumber(upper) {
+  return Math.floor( Math.random() * upper ) + 1;
+}
+
+var counter = 0;
+
+while (counter <= 10000000) {
+	var randNum = randomNumber(6);
+	document.write(randNum + ' ');
+	counter+= 1;
+}
+
+
+
+Loop conditions
+
+var upper = 10000;
+var randomNumber = getRandomNumber(upper);
+var guess;
+var attempts = 0;
+
+while ( guess !== randomNumber ) {
+	guess = getRandomNumber( upper );
+	attempts += 1;
+}
+
+document.write('the random number was' + randomNumber);
+document.write('it took the computer' + attempts + 'to find the number');
+
+
+DO.... WHILE LOOPS
+
+do {
+  // code for loop goes here
+  // it runs AT least one time
+} while ( )
+
+Do while will always run the loop at least once even if false, doesn't check condition unless true
+
+Sometimes you will want to run something until the correct information received.
+
+do {
+	guess = prompt('what is the nmer');
+	guessCount +=1;
+	if(parseInt(guess) === randomNumber){
+		correctGuess = true;
+	}
+} while ( ! correctGuess)
+
+
+FOR LOOPS!!!!!
+A common way to work with arrays and look at each item one at a time.
+
+for( var counter = 0; counter < 10; counter += 1){
+	document.write( counter );
+}
+
+//developers use shorthand for the counter
+
+for( var i = 0; i < 10; i += 1){
+	document.write( i );
+}
+
+
+Exiting loops
+
+break;   //when found inside a loops instantly ends the loop
+
+
+Refactoring
+
+Is the process of making code better and simplifying. DRY don't repeat yourself
+
+
+
+ARRAYS
+
+Array is a flexible way to store multiple items in a list. 
+
+var shoppingList = [ ];
+
+var shoppingList = [ 
+	'milk' , 
+	'butter' , 
+	'eggs' 
+];
+
+console.log(shoppingList[0]);  // logs to console milk
+
 

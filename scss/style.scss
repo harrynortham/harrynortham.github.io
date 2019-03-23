@@ -1,251 +1,27 @@
-$color-primary: #3acec2;
-$color-secondary: #9a8cde;
-$color-heading: #384047;
-$color-text: #576366;
 
-$color-bg: #f4f4f4;
+// ======================================
+//  Partial Imports
+// ======================================
 
-$font-stack-primary: 'Varela Round', sans-serif;
-/* =================================
-  Base Element Styles
-==================================== */
-* {
-  box-sizing: border-box;
-}
 
-body {
-  font-family: $font-stack-primary;
-  line-height: 1.6;
-  color: $color-text;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: $color-bg;
-}
+// Utilities
+@import 'utilities/variables',
+        'utilities/mixins',
+        'utilities/functions',
+        'utilities/helpers';
 
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
+// Base Styles
+@import 'base/reset',
+        'base/base';
 
-p {
-  font-size: 0.95em;
-  margin: 0 0 1em;
-}
+// Layout Styles
+@import 'layout/containers',
+        'layout/header',
+        'layout/card',
+        'layout/footer';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: $color-heading;
-}
-
-h2,
-h3 {
-  margin: 0 0 0.8em;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-}
-
-figure {
-  margin: 0;
-  line-height: 0;
-  position: relative;
-}
-
-figcaption {
-  font-size: 0.9em;
-  line-height: 1.5;
-  color: #fff;
-  padding: 1em;
-  background: rgba(19, 43, 102, .85);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-/* =================================
-  Base Layout Styles
-==================================== */
-/* ---- Navigation ---- */
-.name {
-  font-size: 1.35em;
-  margin: 0;
-}
-
-.main-nav {
-  margin-top: 5px;
-}
-
-.main-nav a,
-.name a {
-  text-align: center;
-  display: block;
-  padding: 10px 15px;
-}
-
-.name a {
-  color: white;
-}
-
-.main-nav a {
-  font-size: 0.95em;
-  color: #ccc;
-  transition-property: color;
-  transition-duration: 0.4s;
-}
-
-.main-nav a:hover {
-  color: #eee;
-}
-/* ---- Layout Containers ---- */
-.main-header {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  background: #303030;
-}
-
-.banner,
-.main-footer {
-  text-align: center;
-}
-
-.banner {
-  color: #fff;
-  background: #3acec2;
-  background: linear-gradient(90deg, $color-primary, $color-secondary);
-  padding: 3.2em 0;
-  margin-bottom: 20px;
-}
-
-.col {
-  padding: 1em;
-  box-sizing: border-box;
-  border-radius: 0.3em;
-  margin-bottom: 2%;
-}
-
-.main-footer {
-  padding: 2em 0;
-  margin-top: 20px;
-  flex: 1;
-  color: #bbb;
-}
-
-.main-footer .social-icons {
-  display: block;
-  font-size: 2em;
-  margin-top: 0.5em;
-}
-
-.main-footer .social-icons a {
-  padding: 0 0.1em;
-  color: #bbb;
-}
-
-.main-footer .social-icons a:hover {
-  color: $color-primary;
-}
-/* ---- Page Elements ---- */
-.logo {
-  width: 190px;
-  border-radius: 50%;
-  border: 15px solid rgba(0, 0, 0, .1);
-  transition-duration: 0.5s, 0.5s;
-  transition-property: border;
-}
-
-.banner:hover .logo {
-  border: 10px solid rgba(0, 0, 0, .18);
-}
-
-.headline,
-.tagline {
-  text-shadow: 1px 1px 1px #666;
-}
-
-.headline {
-  margin-bottom: 0;
-  color: white;
-}
-
-.icon-location {
-  width: 35px;
-  position: absolute;
-  top: -15px;
-  right: -15px;
-}
-
-.button {
-  color: #fff;
-  text-align: center;
-  padding: 0.625em 1.25em;
-  background: $color-primary;
-  border-radius: 0.35em;
-  align-self: flex-start;
-  transition-duration: 0.5s;
-  transition-property: background;
-}
-
-.button:hover {
-  background: $color-secondary;
-}
-/* =================================
-  Media Queries
-==================================== */
-@media (min-width: 769px) {
-  .col,
-  .main-header,
-  .main-nav,
-  .row {
-    display: flex;
-  }
-
-  .row {
-    width: 90%;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-
-  .main-header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .tagline {
-    font-size: 1.4em;
-  }
-
-  .col {
-    flex: 1 48%;
-    flex-direction: column;
-    margin: 1%;
-    background: white;
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0 2px 0 rgba(0,0,0,0.1);
-  }
-
-  .button {
-    margin-top: auto;
-  }
-}
-@media (min-width: 1025px) {
-  .row {
-    width: 80%;
-    max-width: 1150px;
-  }
-
-  .col {
-    flex: 1;
-  }
-
-}
+// Component Styles
+@import 'components/nav',
+        'components/buttons',
+        'components/icons',
+        'components/images';
