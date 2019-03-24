@@ -2090,3 +2090,266 @@ var shoppingList = [
 console.log(shoppingList[0]);  // logs to console milk
 
 
+ADDING DATA TO ARRAYS
+
+shoppingList.length //get length of array
+
+shoppingList[shoppingList.length] = 'cheese';
+
+Add items to the end of an array with .push()
+
+var items = ['Hat', 'Ball', 'Shoes'];
+items.push('Socks','Scarf');
+// items is now ['Hat', 'Ball', 'Shoes', 'Socks', 'Scarf']
+
+Add items to the beginning of an array with .unshift()
+
+var items = ['Hat', 'Ball', 'Shoes'];
+items.unshift('Socks','Scarf');
+// items is now ['Socks', 'Scarf', 'Hat', 'Ball', 'Shoes']
+
+Remove the First Item from an array with .shift()
+
+var items = ['Hat', 'Ball', 'Shoes'];
+var firstItem = items.shift();
+// firstItem now holds 'Hat'
+// and items is now ['Ball', 'Shoes']
+
+Remove the Last Item from an array with .pop()
+
+var items = ['Hat', 'Ball', 'Shoes'];
+var lastItem = items.pop();
+// lastItem now holds 'Shoes'
+// and items is now ['Hat', 'Ball']
+
+
+Looping through Arrays with For Loop
+
+for (var i = 0; i < array.length; i += 1) {
+	console.log(array[i]);
+}
+
+
+USING ARRAY METHODS
+
+Join
+
+var items = ['Hat', 'Ball', 'Shoes'];
+var itemString = items.join(',');
+console.log(itemString);
+
+Concat
+
+Combine two arrays, add more to the end
+
+var currentStudents = ['Joan', 'John','Joquin'];
+var newStudents = ['Samantha','Traci','Tiago'];
+var allStudents - newStudents.concat(currentStudents);
+
+indexOf
+
+Finds what position something is in the list
+
+var fruit = ['Apple','Orange','Grapefruit'];
+var position = fruit.indexOf('Apple');
+
+If not in the array indexOf returns value of -1. This is good for checking if something exists.
+
+Allows us to search products (https://teamtreehouse.com/library/useful-array-methods)
+
+
+TWO DIMENSIONAL ARRAYS
+
+var grades = [
+	[80, 90,100,95],
+	[50, 10,40,65],
+	[60, 30,50,35],
+]
+
+how to access items in multidimensional
+
+grades[2][0]
+
+
+
+OBJECTS
+
+The Object Literal
+
+var student = {name: "Dave", grades: [80,55,10] };
+
+Curly braces equal an object
+
+
+var person = {
+	name: 'sarah',
+	country: 'US',
+	age: 35
+}
+
+Arrays use an index number to track items.
+Objects use a key value example: person.name or person['name']
+dot notation
+
+Change values
+
+To change a value of an object we can do
+
+person.name = 'John';
+
+To assign a new value we can do
+
+person.sex = "Male";
+
+
+LOOPING THROUGH OBJECT
+
+Using `for in` to Loop Through an Object's Properties
+access each property name and property value by looping through an object's keys.
+
+
+for (var prop in person) {
+ console.log(prop, ': ', person[prop]);
+}
+
+
+Mixing and Matching Arrays and Objects
+
+It's common to make an array of objects
+
+
+var tasks = [
+  {
+      name: "Do homework",
+      due: "01/27/2016",
+      complete: false,
+      assignedTo: "Dave"
+  },
+ {
+      name: "Go to gym",
+      due: "01/27/2015",
+      complete: true,
+      assignedTo: "Cecilia"
+  },
+ {
+      name: "Complete JavaScript course",
+      due: "05/27/2015",
+      complete: false,
+      assignedTo: "You"
+  }
+];
+
+
+JSON - JavaScript Object Notation
+
+http://teamtreehouse.com/library/ajax-basics
+http://teamtreehouse.com/library/ajax-basics/programming-ajax/introducing-json
+
+
+Searching through objects
+
+https://teamtreehouse.com/library/the-student-record-search-challenge-solution
+
+
+
+Declaring Variables in JavaScript
+
+Const and Let
+
+Const is short for constant, the value of the variable will never change and shoudnt be overwritten. Cant be assigned another value afterwards.
+
+Using Constants with Arrays and Objects
+
+we can update arrays and objects using const. Just stops them being overwritten completely. We can update and add to them
+
+Let 
+
+Works the same aas var can be reassigned and modified
+
+
+JQUERY
+
+Was added in the mid 2000s to help with browser inconsistances with JS
+not so required today because cross browser support for JS is good
+
+Use the text() and html() methods to get or change content inside HTML elements.
+//they are getters and setters can get or set content
+
+const title = "my <b>title</b>";
+$('#blogContent').text(title); //plain text no html tags
+$('#blogContent').html(title);  //can contain html tags
+
+Getting Values from Form Fields
+Use the val() method to retrieve data from an HTML form field.
+
+$( "#target" ).click(function() {
+  alert( "I've been clicked!" );
+});
+
+append()
+prepend()
+
+Creating a new element in a variable
+
+const $newStudent = $('<li>Sam Smith</li>');
+
+Using Events with Dynamically Added Elements
+
+Traversal
+https://api.jquery.com/category/traversing/tree-traversal/
+
+$('li).eq(1).css({color: 'green'});
+$('li).eq(-2).css({color: 'green'}); //works backwards
+
+$('li).eq(1).prev().css({color: 'green'}); //returns sibling element before
+$('li).eq(1).next().css({color: 'green'}); //returns sibling element after
+
+$('li).eq(1).next().next().css({color: 'green'}); //chaining
+
+
+jQuery-Specific Selectors
+
+We can use CSS selectors, even using psuedo class selectors
+
+https://api.jquery.com/category/selectors/jquery-selector-extensions/
+
+Attributes
+
+var $submit = $('.submit-btn');
+$submit.attr('disabled', true);
+
+
+$( "#greatphoto" ).attr( "title", "Photo by Kelly Clark" ); //setter
+$( "#greatphoto" ).attr( "title"); //getter
+
+
+Modifying styles
+
+.addClass
+.removeClass
+.toggleClass
+.css('backgroundColor','blue');  //we use camel case instead of normal css
+
+
+Stopping the Browser's Default Behavior
+
+https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
+
+on('click', function(event){
+
+event.preventDefault(); //stop form from submitting maybe
+$(':checked') 
+
+});
+
+
+Looping through a jQuery collection
+
+$('a').each(function(){
+	const url = $(this).attr('href');
+});
+
+
+JQUERY PLUGINS
+
+flip-in-y-fr
