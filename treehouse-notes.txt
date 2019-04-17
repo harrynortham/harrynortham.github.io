@@ -2493,7 +2493,381 @@ Always refer to MDN: https://developer.mozilla.org/en-US/docs/Web/API/Document
 
 
 
-Getting and Setting Text with textContent and innerHTML
+Getting and Setting Text with textContent and indssnerHTML
+
+
+let myHeading = document.querySelector("#heading");
+
+myHeading.textContent; //returns the text
+
+myHeading.textContent = "This is a new heading" //changes the heading
+
+
+
+Changing Element Attributes
+
+input.type
+input.className  //change a class of an item
+list.style.display = 'none';
+
+
+Creating New DOM Elements
+
+//creates and element and adds text to it. Not added to the page yet
+
+addItemButton.addEventListener('click', () => {
+  let li = document.createElement('li');
+  li.textContent = addItemInput.value;
+});
+
+
+Appending Nodes
+
+addItemButton.addEventListener('click', () => {
+let ul = document.getElementsByTagname('ul')[0];
+  let li = document.createElement('li');
+  li.textContent = addItemInput.value;
+ul.appendChild(li);
+//clear input after content added to list
+addIteInput.value = '';
+});
+
+
+
+Removing Nodes
+
+removeItemButton.addEventListener('click', () => {
+	let ul = document.querySelector('ul');
+	let li = document.querySelector('li:last-child');
+	ul.removeChild(li);
+}
+
+
+
+
+
+EVENTS
+
+Making a site interactive
+
+Selecting elements on the page
+Manipulating elements
+Listening for user actions
+
+
+
+Examples: click, dblclick, mousedown, mouseup, touchstart, keydown, load, mouseover
+
+
+Functions as parameters
+
+Passing a function into a function
+
+
+
+Delaying Execution with setTimeout()
+
+
+The window object has a setTimeout function we can use to delay the execution of a function.
+
+document.setTimeout(function(){ 
+	alert("Hello"); 
+}, 3000);
+
+
+
+Listening for Events with addEventListener()
+
+
+listItems.addEventListener('mouseover', () => {
+	listItems.textContent = listItems.textContent.toUpperCase();
+});   
+//this can be achieved in CSS but just an example of mouseover event
+
+
+
+
+LOOP THROUGH MULTIPLE ITEMS WITH EVENT LISTENER - gives individual listener to each item, wont apply to new list items added!!
+
+
+const listItems = document.getElementsByTagName('li');
+
+  for(let i = 0; i < listItems.length; i += 1){
+    listItems[i].addEventListener('mouseover', () => {
+      console.log(listItems[i].textContent);
+  });
+
+}
+
+
+Event Bubbling and Delegation
+
+An event received by an element doesn't stop with that one element. That event moves to other elements like the parent, and other ancestors of the element. This is called "event bubbling".
+
+A parent experiences the same event a child does because of event bubbling.
+
+
+The Event Object
+
+
+document.addEventListener('click', (event) => {
+	console.log(event.target);
+
+}); //when any element is clicked on a page the element will be logged out to the console
+
+
+Only perform event on child element if tagName is B
+
+const list = document.querySelector('ul');
+
+list.addEventListener('click', (event) => {
+  if(event.target.tagName == 'B'){
+	event.target.textContent = event.target.textContent.toUpperCase();
+}
+
+});
+
+
+TRAVERSING THE DOM [Need more study]
+
+
+Learn how to get a reference to an element's parent node, using the parentNode property.
+Select an element based on an element relative to it
+
+Element.parentNode;
+
+listDiv.addEventListener('click', (event) => {
+	if(event.target.tagName == 'LI') {
+
+let li = event.target;
+let ul = li.parentNode;
+ul.removeChild(li);	
+
+	}
+});
+
+Remove selected child li from ul parent
+
+
+
+Using previousElementSibling and insertBefore
+
+https://developer.mozilla.org/en-US/docs/Web/API/NonDocumentTypeChildNode/previousElementSibling
+
+https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore
+
+
+
+nextElementSibling
+
+
+
+Getting All Children of a Node with children
+
+var children = node.children;
+
+
+
+Getting the First and Last Child
+
+
+firstElementChild
+lastElementChild
+
+
+
+
+DEBUGGING JAVASCRIPT IN THE BROWSER
+
+Set breakpoint on events
+
+Inspect the element you want to debug
+Add event listener breakpoint for change or whatever and click on the element you want
+We can then step over next function call and see the results of each 
+Now we can find our issue
+
+Set breakpoint on a line
+
+By clicking on a line within sources in js we can set a breakpoint on a line
+when we step over next function every line of code will run until that line
+If we click play, the browser will cycle through a loop and land on the breakpoint again
+
+Add conditional breakpoint
+
+Right click on number and select add conditional breakpoint
+We can add expressions example: 
+run until: li.className !== 'responded'
+
+Debugging functions
+
+Instead of stepping over we need to step into the function or step out of a function
+Call stack 
+
+https://teamtreehouse.com/library/debugging-functions
+
+Debugging Exception Errors
+
+When in sources tab click on esc to show search box below
+We can then search through entire script
+
+If we have a javascript exeption error we can click the button pause on exeption erors, button will turn blue.
+then when we click on an element with an error it will run all code until the error
+
+Breaking on DOM Changes and Watch Expressions
+
+Right click on an element and inspect. Then right click on the element in inpector and scroll to Break on... 
+
+We can setup watchers by selecting watch (above call stack)
+
+In there we can watch variables or as an example: input.value
+
+
+
+Exploring JavaScript Conditionals
+
+Conditional terminology
+
+:::::Two way branching:::::
+
+var isTrue = true;
+
+if(isTrue) {
+	console.log('yes');
+} else {
+	console.log('no');
+}
+
+:::::Multi way branching:::::
+
+var day = 1;
+
+if(day === 0) {
+	console.log('Sunday');
+} else if (day === 1) {
+	console.log('Monday');
+} else if (day === 2) {
+	console.log('Tuesday');
+} else if (day === 3) {
+	console.log('Wednesday');
+} else if (day === 4) {
+	console.log('Thursday');
+} else if (day === 5) {
+	console.log('Friday');
+} else if (day === 6) {
+	console.log('Saturday');
+} else {
+	console.log('Invalid Day');
+}
+
+:::::Switch Statement::::::
+
+Switch is similar to if statement. Not best practice, use multiway branching instead
+
+var day = 1;
+
+switch (day) {
+	case 0:
+	// statements to execute
+	console.log('Sunday');
+	break; //break must exist otherwise statement won't work 
+	case 1:
+	console.log('Monday');
+	break;
+	default:
+	console.log('Invalid day');
+	break;
+}
+
+
+:::::::Ternary Operator::::::::
+
+The ternary operator a is a very compact, two-way branch that many programmers use to write very concise code.
+The only problem is, is that it's so compact it can be hard to read.
+
+<boolean> ? <expression if true> : <expression if false>
+
+isTrue ? console.log('yes') : console.log('no');
+
+var yesOrNo = isTrue ? 'yes' : 'no';
+
+console.log(yesOrNo);
+
+
+
+:::::::Short Circuit Evaluation:::::::
+
+I a way to optimise code by stopping execution as soon as possible
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators
+
+function isAdult(age) {
+	return age && age >= 18;
+}
+
+console.log(isAdult(15));
+
+//if exists age and age is over 18 return true, else return false
+
+
+ES2015 Default Parameters
+
+https://teamtreehouse.com/library/default-parameters
+
+
+
+
+DOMContentLoaded 
+
+event triggers once a page is fully loaded
+Allows us to put code at top of page aswell as the bottom
+Generally better if javascript loaded at bottom of page
+
+document.addEventListener('DOMContentLoaded', => {
+
+})
+
+
+Refactoring
+
+Is the process of rewriting code so it becomes cleaner, shorter and easier to read
+
+
+
+TEMPLATE LITERALS
+
+Use backquote `hello`
+
+const templateLiteral = `hello`;
+
+Allows us to do multi line strings. Example:
+
+
+cont fruit = `
+<ul>
+<li>bannana</li>
+<li>Apple</li>
+<li>Pear</li>
+</ul>`
+
+Interpolation
+
+Template literals get their name from their ability to evaluate expressions. Think of a form letter template with blanks to hold names or numbers that can be filled in later: "Dear ______, Thank you for your business on ______! Sincerely, Management" Similarly, values can be filled, or interpolated, into template literals, to be evaluated when the program runs.
+
+let name = 'gary';
+
+`Hello, ${name}`
+
+
+function like(thing) {
+  return 'I like ' + thing;
+}
+
+function love(thing) {
+  return `I like ${thing}`;
+}
+
+const sentence = `<p>&{like('apples')}, but ${love('oranges')}.</p>`;
+
 
 
 
