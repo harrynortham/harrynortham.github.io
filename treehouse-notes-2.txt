@@ -1,0 +1,16 @@
+SVG Basics
+
+
+Use svgo gui to optimize svg file sizes
+
+SVG fills the size of the containing element
+
+
+Embedding SVG XML
+
+SVG code can be emdedded on a page using its xml code. We can give classes to the different parts of the svg
+
+
+Responsive SVG
+
+Change details of the SVG on smaller devices for example
