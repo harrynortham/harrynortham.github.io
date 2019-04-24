@@ -1,4 +1,4 @@
-SVG Basics
+SVG BASICS
 
 
 Use svgo gui to optimize svg file sizes
@@ -6,11 +6,516 @@ Use svgo gui to optimize svg file sizes
 SVG fills the size of the containing element
 
 
-Embedding SVG XML
+EMBEDDING SVG XML
 
 SVG code can be emdedded on a page using its xml code. We can give classes to the different parts of the svg
 
 
-Responsive SVG
+RESPONSIVE SVG
 
 Change details of the SVG on smaller devices for example
+Apply classes to the elements you want to change. Use mobile first media queries to hide elements in the svg that don't show well in mobile.
+
+Best to use response svgs only on important elements such as logo
+
+ANIMATED SVG WITH CSS
+
+
+We can only animate inline svg code. not embedded images
+
+
+TRANSITIONING SVG PROPERTIES
+
+We use the CSS attribute FILL instead of background to change color
+
+We use STROKE-WIDTH to make a border
+
+
+GROUPING AND TRANSFORMING SVG
+
+<g class="gear">
+</g>
+
+The G tag groups multiple elements of the svg images so we can perform transform on all these items at the same time
+
+
+Tranform origins are handled different to html. 
+
+html default is 50% 50%. svg is 0,0
+
+When rotating in SVG we need to set the transform origin to its center
+
+transform-origin: 50% 50%;
+
+If it still appears off center use:
+
+transform-box: fill-box;
+
+Transform Origin in Firefox
+
+Browser support is generally excellent for SVG animations with CSS. However, there is an issue in Firefox with transform-origin and percentage values. You'll commonly see this referred to as the "transform origin bug" in Firefox.
+
+cx = center X coordinate
+cy = center Y coordinate
+
+We can use these values to give firefox transform origin center
+
+
+
+CREATING AN SVG ANIMATION SEQUENCE
+
+Give all svg elements classes
+
+
+@keyframes grow {  /*kind of like a bounce effect
+ 0%{
+	transform: scale(0); 
+}
+
+30%{
+	transform: scale(1.1);
+}
+
+60%{
+	transform: scale(0.9);
+}
+
+}
+
+.div{
+	animation: grow 1s ease-out backwards; 
+	 /*backwards makes sure animation starts at 0%
+}
+
+.inner{
+	animation-delay: .1s;
+}
+
+.inline{
+	animation-delay: .15s;
+}
+
+
+@keyframes turn{  //opacity, scale and rotation
+0%{
+	transform: rotate(0) scale (0);
+	opacity: 0;
+}
+60% {
+	transform: rotate(375deg) scale (1.1);
+}
+80%{
+	transform: rotate(355deg) scale (0.9);
+}
+100%{
+	transform: rotate(360deg) scale (1);
+}
+
+}
+
+.star{
+	animation: turn 1.1s .2s ease-out backwards;
+	/*animation duration 1.1s, animation delay .2s*/
+}
+
+@keyframes pulse {
+/*shows elements default size at 0%*/
+	50%{
+transform: scale(1.4);
+}
+/*shows elements default size at 100%*/
+}
+
+.star circle{
+animation: pulse .7s 1.5s;
+}
+
+/*make each sibling element trigger at different times*/
+
+.star circle:nth-of-type(2){
+animation-delay: 1.6s;
+}
+.star circle:nth-of-type(3){
+animation-delay: 1.7s;
+}
+.star circle:nth-of-type(4){
+animation-delay: 1.8s;
+}
+.star circle:nth-of-type(5){
+animation-delay: 1.9s;
+}
+
+
+CREATING AN ANIMATED LINE DRAWING
+
+https://css-tricks.com/svg-line-animation-works/
+
+stroke-dasharray
+stroke-dashoffset
+
+https://css-tricks.com/svg-line-animation-works/
+
+
+OPTIMIZING SVG
+
+Use SVGO to minify our SVG files 
+Read options here: https://github.com/svg/svgo
+
+Also there is an online tool: https://jakearchibald.github.io/svgomg/
+
+
+GROUPING AND REFERENCING SVG
+
+We can reuse an svg group on the page by using <defs> and <use>
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use
+
+
+REUSING GRAPHICS WITH <SYMBOL>
+
+https://teamtreehouse.com/library/reusing-graphics-with-symbol-2
+
+The <symbol> element is similar to <defs> and <g>. You use <symbol> for graphics that you want to use multiple times in the same document.
+
+https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol
+
+
+SVG SPRITE TOOLS
+
+Use a gulp build tool to generate an svg sprite
+
+https://github.com/jkphl/gulp-svg-sprite
+
+
+
+
+
+
+JAVASCRIPT LOCAL STORAGE
+
+Web storage types: 
+session storage (data only lasts as long as browser open)
+local storage (available after browser closed, max data 5mb, not a secure way to store info)
+
+Let's play with the Local and the Session Storage API in Chrome's DevTools to get a feel for how to use them.
+
+localStorage
+Typing localStorage into console we can see all info stored
+
+to add to localStorage we can do
+
+localStorage.setItem('color','green');
+
+to add to sessionStorage we can do
+
+sessionStorage.setItem('color','green');
+
+to get an item
+
+localStorage.getItem('color');
+
+or
+
+sessionStorage.getItem('color');
+
+to remove an item
+
+localStorage.removeItem('color');
+sessionStorage.removeItem('color');
+
+to updated and item:
+
+localStorage.color = 'green'
+
+to get and existing item
+
+localStorage.color
+
+to delete it
+
+delete localStorage.color
+
+
+We can use local storage to store an array. Example a todo list with items.
+Then we can loop through the locally stored array
+
+
+
+
+
+CSS GRID
+
+
+Two dimensional layout
+
+
+Grid containers - define container first, all direct children of the container become grid items
+Grid items - are split onto grid lines
+
+
+DEFINING THE GRID
+
+<div class="grid">
+<div class="item">1</div>
+<div class="item">2</div>
+<div class="item">3</div>
+</div>
+
+
+.grid {
+max-width:800px;
+display: grid;
+grid-template-columns: 200px auto 200px; 
+//we can use em rem px % and calc 
+//if we use auto the column will become flexible
+
+grid-template-rows: 100px 200px;
+//first row is 100px tall, second row is 200px talls
+}
+
+
+
+ADD GUTTERS BETWEEN ROWS AND COLUMNS
+
+
+grid-column-gap: 20px; 
+grid-row-gap: 20px; 
+
+shorthand is done:
+
+grid-gap: 20px 20px;
+
+
+https://codepen.io/harrynortham/pen/GLXWwG
+
+
+
+INTRODUCING FR, A FLEXIBLE CSS LENGTH UNIT
+
+
+Grid layout introduces a new length unit, fr (or fraction), a flexible unit designed for creating grid tracks that expand and contract based on the free space in the grid.
+
+
+grid-template-columns: 1fr 1fr 1fr; 
+
+//creates three equal columns 
+
+
+
+SET TRACKS WITH REPEAT() NOTATION
+
+
+grid-template-columns: repeat(3, 1fr);
+
+//can be used with columns or rows
+/saves us writing each column individually
+//example grid-template-columns: repeat(4 , 1fr); four equal columns
+
+we can also repeat certain parts of a track
+
+grid-template-columns: 2fr repeat(3, 1fr);
+
+
+
+FLEXIBLE TRACK SIZING WITH MINMAX()
+
+
+Allows use to make responsive layouts without media queries!!!!!!
+
+
+grid-template-columns: minmax(200px,1fr) 1fr 1fr; //will never get smaller than 200px
+grid-template-columns: repeat(3, minmax(200px,1fr));
+
+
+
+REPEAT TRACKS WITH AUTO-FILL AND AUTO-FIT
+
+grid-template-columns: repeat(auto-fill, 200px);  //this will fit as many 200px grid items it can on one row and will break to ned row if browser resized.
+
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); //items will span the entire length with no gaps. responsive without media queries
+
+
+The Grid Layout repeat notation supports two keywords -- auto-fill and auto-fit -- to help with this.
+
+
+autofill -- creates empty columns
+autofit -- collapses empty columns and takes full space
+
+
+grid-template-columns: repeat(autofit, minmax(60px, 1fr)); 
+
+
+THE EXPLICIT AND IMPLICIT GRID
+
+Explicit grid is what you create with rows and columnbs
+What happens if more pages items get added to your grid than expected
+
+Implicit grid
+
+
+CONTROL THE AUTO-PLACEMENT OF GRID ITEMS
+
+Knowing why and how implicit grid tracks are created is important when working with grid layout. You might not always know exactly how many items will be in your grid container. What if you need to size or position implicit tracks a certain way? That could get tricky, because there could be any number of implicit tracks.
+
+grid-auto-rows 
+grid-auto-columns 
+
+//these control the size of implicit tracks 
+//good for use when we don't know the amount of items we will show on the page. Blog posts etc
+
+grid-auto-flow: column; //positions items next to columns instead of rows
+grid-auto-flow: row; //adds extra items to the bottom
+
+
+
+POSITION ITEMS BY GRID LINES
+
+
+    <div class="container">
+      <header>Header</header>
+      <main>Main</main>
+      <aside>Aside</aside>
+      <footer>Footer</footer>
+    </div>
+
+
+.container{
+display:grid;
+grid-template-columns: 2fr 1fr;
+grid-template-rows: 100px minmax(200px, 1fr) 100px;
+grid-gap: 10px;
+height:100vh;
+}
+
+header{
+grid-column-start: 1;
+grid-column-end: 3;
+}
+
+footer{
+grid-column-start: 1;
+grid-column-end: 3;
+}
+
+
+//make something span 2 rows;
+
+main{
+grid-row-start: 2;
+grid-row-end: 4;
+}
+
+
+
+NEGATIVE GRID LINES AND SHORTHAND SYNTAX
+
+Using the value -1 ensures it always stretches to end no matter how many tracks. Example:
+
+grid-column-end: -1;
+grid-row-end: -1;
+
+
+SHORTHAND:
+
+We just use
+
+grid-column: 1 / -1;
+grid-row: 2 / 3;
+
+
+
+
+PLACING ELEMENTS USING GRID TEMPLATE AREAS
+
+
+CSS Grid provides a feature that lets you create named grid areas, then you use those names to position items on the grid. First, you'll use the grid-area property to assign a custom name to each grid area. Then you'll use the grid-template-areas property to define how the layout looks, by referencing those custom named areas.
+
+
+grid-area - to assign a custom name to a grid area
+grid-template-areas - to define how the layout looks
+
+
+header{
+grid-area: header;
+}
+
+main{
+grid-area: main;
+}
+
+aside{
+grid-area: aside;
+}
+
+footer{
+grid-area: footer
+}
+
+
+.container{
+height:100vh;
+display:grid;
+grid-template-columns: 2fr 1fr;
+grid-template-rows: 100px minmax(200px, 1fr) 100px;
+grid-gap: 10px;
+grid-template-areas: 
+"header header" 
+"main aside" 
+"footer footer";
+}
+
+
+
+ADJUST THE GRID WITH MEDIA QUERIES
+
+
+//mobile first
+
+grid-template-columns: 1fr;
+grid-auto-rows: minmax(150px, auto) //auto height rows
+
+grid-template-areas:
+"header"
+"nav"
+"main"
+"aside"
+"footer"
+
+//everything will be stacked on top of each other
+
+@media(min-width:768px){
+
+.container{
+grid-template-columns: 1fr 2fr 1fr;
+grid-template-rows: 100px minmax(150px, auto) 100px;
+grid-template-areas: 
+"header header header"
+"nav main aside"
+"footer"
+}
+
+}
+
+
+@media(min-width:992px){
+
+.container {
+grid-template-areas"
+"header header header"
+"nav main aside"
+"nav footer footer"
+}
+}
+
+
+
+USING GRID WITH FLEXBOX
+
+
+https://teamtreehouse.com/library/using-grid-with-flexbox
+
+
+// THIS IS THE CORRECT WAY TO DO CARDS. VERY EASY AND COOL
+
+
+
