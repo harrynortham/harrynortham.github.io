@@ -325,3 +325,227 @@ callback(element);
 
 addStyleToElement(argument, callback);
 
+
+
+
+AJAX BASICS
+
+Made up of requests and responses
+
+1. Create an XMLHTTP Request object
+2. Create a callback function
+3. Open a request.
+4. Send the request.
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function () {
+if (xhr.readyState === 4){
+if(xhr.status ===200)_
+document.getElementById('ajax').innerHTML = xhr.responseText;
+} else if (xhr.status === 404){
+//file not found
+}else if (xhr.status === 500) {
+//server had a problem
+}
+
+}
+};
+xhr.open('GET','mysidebar.html');
+xhr.send();
+
+
+//we can also alert the error with alert(xhr.statusText);
+//xhr status 200 is ok. 404 doesn't exist. 500 data error 
+//the ready state 4 is when we have received the data from web server
+//if we wrap send method in a function we can then do the ajax request on click on using other event listeners
+
+
+Post and Get
+
+Use get when getting data and post when submitting forms for example
+
+
+AJAX Response Formats
+
+XML or JSON
+
+JSON is better and more popular than XML and works better with Javascript
+
+
+AJAX SECURITY LIMITATIONS
+
+In general can't access stuff from other sites.
+Same origin policy
+problems requesting data from other websites
+switching from http to https isn't allowed
+switching ports isn't allowed
+Different hosts and subdomains
+
+We can create a web proxy to get around this
+in php or other serverside language
+
+JSONP - JSON WITH PADDING, LOAD A JAVASCRIPT FILE FROM ANOTHER DOMAIN!!!!!
+
+CORS - Cross-Origin Resource Sharing
+Allows a server to accept requests from other domains
+
+AJAX doesn't work in localhost enviroment. Need to test in live web server
+
+
+
+PROGRAMMING AJAX
+
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+if(xhr.readyState === 4){
+  if(xhr.status === 200){
+    document.getElementById('ajax').innerHTML = xhr.responseText;
+  }
+}
+};
+xhr.open('GET', 'sidebar.html');
+xhr.send();
+
+
+
+
+INTRODUCING JSON - JavaScript Object Notation
+
+Uses key values pairs
+Keys must have double quotes as well as the value if a string, integers and boolean don't require
+
+
+Array of json objects
+
+[ 
+  {
+    "title" : "My Way",
+    "artist" : "Frank Sinatra"
+  },
+  {
+    "title" : "My Way",
+    "artist" : "Frank Sinatra"
+  },
+  {
+    "title" : "My Way",
+    "artist" : "Frank Sinatra"
+  },
+  {
+    "title" : "My Way",
+    "artist" : "Frank Sinatra"
+  }
+]
+
+
+PARSING JSON DATA
+
+
+var xhr = new XMLHttpRequest();
+
+xhr.onreadystatechange = function() {
+if(xhr.readyState === 4){
+  if(xhr.status === 200){
+    //console.log(xhr.responseText);
+    //console.log(typeof xhr.responseText); //returns what type of data we have
+
+    const employees = JSON.parse(xhr.responseText);
+	//console.log(typeof employees); //returns an object
+
+  }
+}
+};
+
+xhr.open('GET', 'data/employees.json');
+xhr.send();
+
+
+JSON.parse takes a string and converts it to a json
+
+
+
+PROCESSING JSON DATA
+
+
+Use a loop within the callback function to loop through objects and add to page.
+
+
+
+
+
+JQUERY AJAX
+
+Is simple and only requires one line of text
+
+$('#ajax').load('sidebar.html');   //just a basic get method
+
+jQuery’s AJAX Shorthand Methods
+
+var callback = function (response) {
+
+}
+
+$.get(url, data, callback);
+
+url is the url of the page we want to get
+data id the query string example: firtname=Dave&lastname=tony
+callback is the name of the function we want to get and loop through elements in
+
+$.get('sidebar.html', function(response){
+	$('#ajax).html(response);
+});
+
+
+$(document).ready((function () {
+
+});
+
+
+$.each(array_or_object, callback);
+
+$.each(array_or_object, function(index,value){
+	console.log(index, value);
+});
+
+
+POSTING DATA WITH JQUERY
+
+
+var url = "http://webiste.com/posts";
+var data = {
+firstname : "dave",
+lastname : "mate"
+}
+
+$.post(url, data, callback);
+
+
+
+THE JQUERY AJAX METHOD
+
+
+$.ajax(url,settings);
+
+$.ajax(url,{
+data: formData,
+type: "POST",
+success: function(response){
+$('#signup').html("<p>thanks for signing up</p>")
+}
+});
+
+
+
+Handling errors
+
+$.get('missing.html', function(data){
+	$('#myDiv').html(data);
+}).fail(function (jqXHR){
+alert(jqXHR.status);
+alert(jqXHR.statusText);
+});
+
+
+
+
+
+
